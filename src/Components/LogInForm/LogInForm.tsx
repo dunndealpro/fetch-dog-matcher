@@ -61,7 +61,7 @@ const LogInForm: FC<LogInFormProps> = (props) => {
 
   return (
     <>
-      LogInForm
+      
       <Form autoComplete="off" onSubmit={handleSubmit}>
         <Form.Group className="mb-3">
           <Form.Control

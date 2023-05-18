@@ -35,7 +35,7 @@ function App() {
       {user ? (
         <>
           <NavBar setUser={setUser} />
-          <div className="flex-grow-1 overflow-auto" >
+          <div className="flex-grow-1 overflow-auto">
             <Routes>
               <Route path="/" element={<SearchPage />} />
             </Routes>
@@ -44,7 +44,9 @@ function App() {
         </>
       ) : (
         <>
-          <AuthPage setUser={setUser} />
+          <div className="flex-grow-1 overflow-auto">
+            <AuthPage setUser={setUser} />
+          </div>
         </>
       )}
     </main>
