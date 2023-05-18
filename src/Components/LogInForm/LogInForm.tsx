@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-
+import Cookies from "js-cookie";
 
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
@@ -10,43 +10,54 @@ import Form from "react-bootstrap/Form";
 import "./LogInForm.css";
 
 interface LogInFormProps {
-    setUser: React.Dispatch<React.SetStateAction<boolean>>;
-  }
+  setUser: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
 const LogInForm: FC<LogInFormProps> = (props) => {
+  const expirationHours = 1;
+  const expirationDate = new Date();
+  expirationDate.setTime(
+    expirationDate.getTime() + expirationHours * 60 * 60 * 1000
+  );  
 
-    const [credentials, setCredentials] = useState({
-        name: '',
-        email: ''
-    });
-    
-    const [error, setError] = useState('');
+  const [credentials, setCredentials] = useState({
+    name: "",
+    email: "",
+  });
 
-    function handleChange(evt: { target: { name: any; value: any; }; }) {
-        setCredentials({ ...credentials, [evt.target.name]: evt.target.value });
-        setError('');
+  const [error, setError] = useState("");
+
+  function handleChange(evt: { target: { name: any; value: any } }) {
+    setCredentials({ ...credentials, [evt.target.name]: evt.target.value });
+    setError("");
+  }
+
+  const loginURL = `https://frontend-take-home-service.fetch.com/auth/login`;
+
+  async function handleSubmit(evt: { preventDefault: () => void }) {
+    // Prevent form from being submitted to the server
+    evt.preventDefault();
+    try {
+      console.log(credentials);
+      const response = await fetch(loginURL, {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(credentials),
+      });
+      if (response.status === 200) {
+        console.log(response.status)
+        Cookies.set("hasCookies", "true", { expires: expirationDate });
+        props.setUser(true);
+      }
+    } catch {
+      console.log("user");
+      setError("Log In Failed - Try Again");
+      console.log(error);
     }
-
-    const loginURL = `https://frontend-take-home-service.fetch.com/auth/login`
-
-    async function handleSubmit(evt: { preventDefault: () => void; }) {
-        // Prevent form from being submitted to the server
-        evt.preventDefault();
-        try {            
-            console.log(credentials)
-            const response = await fetch(loginURL,{method: "POST", credentials: "include", headers: {
-                "Content-Type": "application/json", 
-              },  body: JSON.stringify(credentials)})
-            if(response){
-            console.log(response)
-            props.setUser(true);
-        }
-        } catch {
-            console.log('user')
-            setError('Log In Failed - Try Again');
-            console.log(error)
-        }
-    }
+  }
 
   return (
     <>
@@ -72,7 +83,7 @@ const LogInForm: FC<LogInFormProps> = (props) => {
             required
           />
         </Form.Group>
-        
+
         <Button className="m-2 game-button" type="submit">
           Login
         </Button>
