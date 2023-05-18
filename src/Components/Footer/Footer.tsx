@@ -62,10 +62,8 @@ const Footer: FC = () => {
               target="blank"
             >
               Contact
-            </a>
-            {/* </Col> */}
-          </Nav>
-          {/* </Navbar.Collapse> */}
+            </a>           
+          </Nav>          
         </Navbar>
       </div>
     </>
