@@ -17,7 +17,7 @@ function App() {
     <main>
       {user ? (
         <>
-          <NavBar />
+          <NavBar setUser={setUser} />
           <SearchPage />
           <Footer />
         </>

@@ -34,7 +34,7 @@ const LogInForm: FC<LogInFormProps> = (props) => {
         evt.preventDefault();
         try {            
             console.log(credentials)
-            const response = fetch(loginURL,{method: "POST", credentials: "include", headers: {
+            const response = await fetch(loginURL,{method: "POST", credentials: "include", headers: {
                 "Content-Type": "application/json", 
               },  body: JSON.stringify(credentials)})
             if(response){
