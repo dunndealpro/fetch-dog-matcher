@@ -2,8 +2,9 @@ import { FC } from "react";
 import Container from "react-bootstrap/Container";
 import Cookies from "js-cookie";
 
-import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
 import "./NavBar.css";
 
 interface NavBarProps {
@@ -20,28 +21,24 @@ const NavBar: FC<NavBarProps> = ({ setUser }) => {
     Cookies.remove("hasCookies");
     setUser(false);
   }
+
+  let title = "Welcome " + Cookies.get("hasCookies") + "!";
+
   return (
     <>
       <Navbar sticky="top" className="bg-secondary">
-        {/* <Container> */}
         <Navbar.Brand className="ms-2"> Dog-Matcher</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
-          <Nav className="me-auto" defaultActiveKey="/">
-            <Nav.Item>
-              <Nav.Link href="">About</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link href="">Projects</Nav.Link>
-            </Nav.Item>
-            <Nav.Item className="justify-content-end">
-              <Nav.Link onClick={handleLogOut} href="">
-                Logout
-              </Nav.Link>
-            </Nav.Item>
-          </Nav>
-        </Navbar.Collapse>
-        {/* </Container> */}
+        <Nav className="ms-auto me-5" defaultActiveKey="/">
+          <NavDropdown
+            
+            title={title}
+            id="basic-nav-dropdown"
+          >
+            <NavDropdown.Item className="" onClick={handleLogOut} href="">
+              Logout
+            </NavDropdown.Item>
+          </NavDropdown>
+        </Nav>
       </Navbar>
     </>
   );

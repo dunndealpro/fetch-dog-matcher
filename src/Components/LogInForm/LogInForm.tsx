@@ -49,7 +49,7 @@ const LogInForm: FC<LogInFormProps> = (props) => {
       });
       if (response.status === 200) {
         console.log(response.status)
-        Cookies.set("hasCookies", "true", { expires: expirationDate });
+        Cookies.set("hasCookies", `${credentials.name}`, { expires: expirationDate });
         props.setUser(true);
       }
     } catch {
