@@ -2,9 +2,6 @@ import { FC, useState } from "react";
 import Cookies from "js-cookie";
 
 import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
 
 import "./LogInForm.css";

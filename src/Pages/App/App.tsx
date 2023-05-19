@@ -15,6 +15,7 @@ import "./App.css";
 function App() {
   const [user, setUser] = useState(checkForCookies);
 
+ 
   function checkForCookies() {
     const cookieVal = Cookies.get("hasCookies");
     console.log(cookieVal);
@@ -26,9 +27,6 @@ function App() {
     }
   }
 
-  // useEffect(() => {
-  //   checkForCookies();
-  // }, []);
 
   return (
     <main className="App">

@@ -28,12 +28,8 @@ const NavBar: FC<NavBarProps> = ({ setUser }) => {
     <>
       <Navbar sticky="top" className="bg-secondary">
         <Navbar.Brand className="ms-2"> Dog-Matcher</Navbar.Brand>
-        <Nav className="ms-auto me-5" defaultActiveKey="/">
-          <NavDropdown
-            
-            title={title}
-            id="basic-nav-dropdown"
-          >
+        <Nav className="ms-auto me-2" defaultActiveKey="/">
+          <NavDropdown align="end" title={title} id="basic-nav-dropdown">
             <NavDropdown.Item className="" onClick={handleLogOut} href="">
               Logout
             </NavDropdown.Item>

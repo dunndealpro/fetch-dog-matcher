@@ -1,0 +1,5 @@
+.breed-container{
+    /* width: 50vw; */
+    height: 60vh;
+    overflow-y: scroll;
+}
