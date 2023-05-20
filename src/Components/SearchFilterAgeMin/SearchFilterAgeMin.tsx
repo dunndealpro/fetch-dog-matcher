@@ -20,7 +20,7 @@ const SearchFilterAgeMin: FC<SearchFilterAgeMinProps> = ({ageMin, setAgeMin}) =>
         type="number"
         id="inputMinAge"
         aria-describedby="ageMinHelpBlock"
-        value={ageMin} // Use minAge as the value
+        value={ageMin} 
         onChange={handleChange}
         min={0}
       />

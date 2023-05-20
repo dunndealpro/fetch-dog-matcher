@@ -76,6 +76,7 @@ const SearchResultSort: FC<SearchResultSortProps> = ({
             </Dropdown>
           </Col>
         </Row>
+        Sorting Options
       </Container>
     </>
   );

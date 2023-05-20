@@ -2,8 +2,12 @@ import { FC } from "react";
 import './SearchFilterResultsPerPage.css'
 import { Form, Button } from "react-bootstrap";
 
+// interface ResultPerPage{
+//   resultsPerPage: number;  
+// }
+
 interface SearchFilterResultsPerPageProps{
-    resultsPerPage: number;
+    resultsPerPage:number;
     setResultsPerPage: React.Dispatch<React.SetStateAction<number>>
 }
 
@@ -13,13 +17,13 @@ const SearchFilterResultsPerPage: FC<SearchFilterResultsPerPageProps> = ({result
         setResultsPerPage( evt.target.value );
         
       }
-
+console.log(resultsPerPage)
   return (
     <>      
       <Form.Control
         type="number"
-        id="inputMaxAge"
-        aria-describedby="ageMaxHelpBlock"
+        id="inputResultsPerPage"
+        aria-describedby="resultsPerPageHelpBlock"
         value={resultsPerPage} // Use MaxAge as the value
         onChange={handleChange}
         min={10}

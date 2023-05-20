@@ -13,6 +13,10 @@ import SearchFilterResultsPerPage from "../SearchFilterResultsPerPage/SearchFilt
 import Modal from "react-bootstrap/Modal";
 import SearchResultSort from "../SearchResultSort/SearchResultSort";
 
+// interface ResultPerPage{
+//   resultsPerPage: number;  
+// }
+
 interface SearchResult {
   resultIds: Array<any>;
   total: number;
@@ -20,9 +24,10 @@ interface SearchResult {
   prev: string | undefined;
 }
 
-
-
 interface SearchFilterProps {
+  // resultsPerPage: number
+  // setResultsPerPage: React.Dispatch<React.SetStateAction<ResultPerPage>>;
+  
   selectedBreeds: string[];
   setSelectedBreeds: React.Dispatch<React.SetStateAction<string[]>>;
   searchResults: SearchResult | undefined;
@@ -35,6 +40,8 @@ const SearchFilter: FC<SearchFilterProps> = ({
   selectedBreeds,
   setSelectedBreeds,
   setSearchResults,
+  // resultsPerPage,
+  // setResultsPerPage
 }) => {
   const [ageMin, setAgeMin] = useState<number>(0);
   const [ageMax, setAgeMax] = useState<number>(31);
