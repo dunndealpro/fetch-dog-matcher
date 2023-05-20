@@ -9,13 +9,21 @@ import { stringify } from "querystring";
 import SelectBreedsFilter from "../SelectBreedsFilter/SelectBreedsFilter";
 import SearchFilterAgeMin from "../SearchFilterAgeMin/SearchFilterAgeMin";
 import SearchFilterAgeMax from "../SearchFilterAgeMax/SearchFilterAgeMax";
+import SearchFilterResultsPerPage from "../SearchFilterResultsPerPage/SearchFilterResultsPerPage";
 import Modal from 'react-bootstrap/Modal';
+
+interface SearchResult{
+  resultIds: Array<any>,
+  total: number,
+  next: string | undefined,
+  prev: string | undefined
+}
 
 interface SearchFilterProps {
   selectedBreeds: string[];
   setSelectedBreeds: React.Dispatch<React.SetStateAction<string[]>>;
-  searchResults: object[] | undefined;
-  setSearchResults: React.Dispatch<React.SetStateAction<object[]>>;
+  searchResults: SearchResult | undefined;
+  setSearchResults: React.Dispatch<React.SetStateAction<SearchResult|undefined>>;
 }
 
 const SearchFilter: FC<SearchFilterProps> = ({
@@ -25,13 +33,14 @@ const SearchFilter: FC<SearchFilterProps> = ({
 }) => {
 
   const [ageMin, setAgeMin] = useState<number>(0)
-  const [ageMax, setAgeMax] = useState<number>(99)
+  const [ageMax, setAgeMax] = useState<number>(31)
   const [show, setShow] = useState(false);
+  const [resultsPerPage, setResultsPerPage] = useState<number>(25)
 
   const handleClose = () => setShow(false);
   
     
-  let searchUrl = `https://frontend-take-home-service.fetch.com/dogs/search?size=10000`;
+  let searchUrl = `https://frontend-take-home-service.fetch.com/dogs/search?`;
 
  
 
@@ -46,11 +55,12 @@ const SearchFilter: FC<SearchFilterProps> = ({
 
     let maxAgeString = "&ageMax="+ageMax.toString()
     let minAgeString = "&ageMin="+ageMin.toString()
+    let resultsPerPageString = "&size="+resultsPerPage.toString()
 
-    searchUrl=searchUrl+queryBreedsString+maxAgeString+minAgeString
+    searchUrl=searchUrl+queryBreedsString+maxAgeString+minAgeString+resultsPerPageString
    
     console.log("submit", searchUrl);
-    let results = await fetch(searchUrl, {
+    let results: SearchResult|undefined = await fetch(searchUrl, {
       credentials: "include",
     }).then((res) => res.json());
     console.log(results);
@@ -71,7 +81,10 @@ const SearchFilter: FC<SearchFilterProps> = ({
       <Col sm={2}>
       <SearchFilterAgeMax ageMax={ageMax} setAgeMax={setAgeMax}/>
       </Col>
-      <Col>
+      <Col sm={2}>
+      <SearchFilterResultsPerPage resultsPerPage={resultsPerPage} setResultsPerPage={setResultsPerPage}/>
+      </Col>
+      <Col sm={2}>
         <Button className="m-2" variant="primary" onClick={handleSubmit}>
           Submit
         </Button>
