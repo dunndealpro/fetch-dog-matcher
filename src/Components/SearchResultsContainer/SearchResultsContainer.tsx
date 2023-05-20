@@ -15,16 +15,28 @@ interface SearchResult {
 //     resultsPerPage: number;  
 //   }
 
+// interface LikedDog{
+//   likedDog: string
+// }
+
+interface LikedDogs{
+  likedDogs: string[] | undefined
+}
+
 interface SearchResultsContainerProps {
     searchResults: SearchResult | undefined;
     setSearchResults: React.Dispatch<React.SetStateAction<SearchResult | undefined>>;
     // resultsPerPage: ResultPerPage;
     // setResultsPerPage:  React.Dispatch<React.SetStateAction<ResultPerPage>>;
+    likedDogs?: LikedDogs;
+    setLikedDogs: React.Dispatch<React.SetStateAction<LikedDogs | undefined>>;
 }
 
 const SearchResultsContainer: FC<SearchResultsContainerProps> = ({
   searchResults,
   setSearchResults,
+  likedDogs,
+  setLikedDogs
 //   resultsPerPage
 }) => {
   console.log(searchResults?.resultIds);
@@ -47,6 +59,8 @@ const SearchResultsContainer: FC<SearchResultsContainerProps> = ({
                 key={k}
                 dog={result}
                 searchResult={searchResults}
+                likedDogs={likedDogs}
+                setLikedDogs={setLikedDogs}
               />
             </Col>
           ))}

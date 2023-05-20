@@ -8,6 +8,14 @@ import SearchPageWelcome from "../../Components/SearchPageWelcome/SearchPageWelc
 //   resultsPerPage: number;
 // }
 
+// interface LikedDog{
+//     likedDog: string
+// }
+
+interface LikedDogs{
+    likedDogs: string[] | undefined
+  }
+
 interface SearchResult {
   resultIds: Array<any>;
   total: number;
@@ -18,6 +26,7 @@ interface SearchResult {
 const SearchPage: FC = () => {
   const [selectedBreeds, setSelectedBreeds] = useState<string[]>([]);
   const [searchResults, setSearchResults] = useState<SearchResult>();
+  const [likedDogs, setLikedDogs] = useState<LikedDogs | undefined>()
 //   const [resultsPerPage, setResultsPerPage] = useState<ResultPerPage>({
 //     resultsPerPage: 25,
 //   });
@@ -25,7 +34,7 @@ const SearchPage: FC = () => {
 
   useEffect(() => {
     console.log("search page use effect", searchResults);
-  }, [searchResults]);
+  }, [searchResults, likedDogs]);
 
   return (
     <>
@@ -45,6 +54,8 @@ const SearchPage: FC = () => {
       <SearchResultsContainer
         searchResults={searchResults}
         setSearchResults={setSearchResults}
+        likedDogs={likedDogs}
+        setLikedDogs={setLikedDogs}
         // resultsPerPage={resultsPerPage}
         // setResultsPerPage={setResultsPerPage}
       />
