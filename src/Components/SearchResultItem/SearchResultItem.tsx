@@ -1,6 +1,7 @@
 import { FC, useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import { Accordion } from "react-bootstrap";
 import { Container, Col, Row } from "react-bootstrap";
 import "./SearchResultItem.css";
 
@@ -13,10 +14,16 @@ interface Dog {
   breed: string;
 }
 
-
+interface SearchResult {
+  resultIds: Array<any>;
+  total: number;
+  next: string | undefined;
+  prev: string | undefined;
+}
 
 interface SearchResultItemProps {
-  result: string;
+  dog: string;
+  searchResult: SearchResult;
 }
 
 const SearchResultItem: FC<SearchResultItemProps> = (props) => {
@@ -24,8 +31,8 @@ const SearchResultItem: FC<SearchResultItemProps> = (props) => {
 
   let dogSearchUrl = `https://frontend-take-home-service.fetch.com/dogs`;
 
-  const reqBodyParams = [props.result];
-  console.log(props.result);
+  const reqBodyParams = [props.dog];
+//   console.log(props.dog);
 
   async function getDog() {
     let dogResults = await fetch(dogSearchUrl, {
@@ -37,27 +44,37 @@ const SearchResultItem: FC<SearchResultItemProps> = (props) => {
       body: JSON.stringify(reqBodyParams),
     }).then((res) => res.json());
     setDogInfo(dogResults[0]);
-    console.log(dogResults);
+    // console.log(dogResults);
   }
 
   useEffect(() => {
     getDog();
-    console.log(dogInfo);
-  }, []);
+    // console.log(dogInfo);
+  }, [props.searchResult]);
 
   return (
     <>
-      <Card style={{ width: "18rem" }}>
+      <Card>
+      
         <Card.Img variant="top" src={dogInfo?.img} />
         <Card.Body>
-          <Card.Title>{dogInfo?.name}</Card.Title>
-          <Card.Text>
-            Hi, I am {dogInfo?.age} years old and I am currently located in {dogInfo?.zip_code}
-          </Card.Text>
+          <Accordion >
+            <Accordion.Item eventKey="0">
+              <Accordion.Header>Meet {dogInfo?.name}</Accordion.Header>
+              <Accordion.Body>
+                <Card.Text>
+                  Hi, I am a {dogInfo?.age} year old {dogInfo?.breed} and I am
+                  currently located in {dogInfo?.zip_code}
+                </Card.Text>
+              </Accordion.Body>
+            </Accordion.Item>
+          </Accordion>
+          {/* <Card.Text>
+            Hi, I am {dogInfo?.age} years old {dogInfo?.breed} and I am currently located in {dogInfo?.zip_code}
+          </Card.Text> */}
           {/* <Button variant="primary">Go somewhere</Button> */}
         </Card.Body>
       </Card>
-      
     </>
   );
 };

@@ -16,7 +16,6 @@ const SearchFilterResultsPerPage: FC<SearchFilterResultsPerPageProps> = ({result
 
   return (
     <>      
-      <Form.Label htmlFor="inputAgeMax"># of Results per Page</Form.Label>
       <Form.Control
         type="number"
         id="inputMaxAge"
@@ -24,7 +23,10 @@ const SearchFilterResultsPerPage: FC<SearchFilterResultsPerPageProps> = ({result
         value={resultsPerPage} // Use MaxAge as the value
         onChange={handleChange}
         min={10}
+        max={50}
       />
+      <Form.Label htmlFor="inputAgeMax"># of Results per Page</Form.Label>
+      <br />
       <Form.Text id="MaxAgeHelpBlock" muted>
         Enter a number
       </Form.Text>

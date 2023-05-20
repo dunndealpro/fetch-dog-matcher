@@ -16,7 +16,6 @@ const SearchFilterAgeMax: FC<SearchFilterAgeMaxProps> = ({ageMax, setAgeMax}) =>
 
   return (
     <>      
-      <Form.Label htmlFor="inputAgeMax">Max Age</Form.Label>
       <Form.Control
         type="number"
         id="inputMaxAge"
@@ -25,6 +24,8 @@ const SearchFilterAgeMax: FC<SearchFilterAgeMaxProps> = ({ageMax, setAgeMax}) =>
         onChange={handleChange}
         min={0}
       />
+      <Form.Label htmlFor="inputAgeMax">Max Age</Form.Label>
+      <br />
       <Form.Text id="MaxAgeHelpBlock" muted>
         Enter a num {">"}= 0
       </Form.Text>

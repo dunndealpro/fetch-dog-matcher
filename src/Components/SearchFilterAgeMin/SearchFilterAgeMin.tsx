@@ -16,7 +16,6 @@ const SearchFilterAgeMin: FC<SearchFilterAgeMinProps> = ({ageMin, setAgeMin}) =>
 
   return (
     <>      
-      <Form.Label htmlFor="inputAgeMin">Min Age</Form.Label>
       <Form.Control
         type="number"
         id="inputMinAge"
@@ -25,6 +24,8 @@ const SearchFilterAgeMin: FC<SearchFilterAgeMinProps> = ({ageMin, setAgeMin}) =>
         onChange={handleChange}
         min={0}
       />
+      <Form.Label htmlFor="inputAgeMin">Min Age</Form.Label>
+      <br />
       <Form.Text id="minAgeHelpBlock" muted>
         Enter a num {">"}= 0
       </Form.Text>
