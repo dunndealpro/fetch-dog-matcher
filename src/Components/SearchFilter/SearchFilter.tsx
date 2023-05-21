@@ -86,29 +86,29 @@ const SearchFilter: FC<SearchFilterProps> = ({
 
   return (
     <>
-      <Col sm={2}>
+      <Col sm={2} className="mt-2">
         <SelectBreedsFilter
           selectedBreeds={selectedBreeds}
           setSelectedBreeds={setSelectedBreeds}
         />
       </Col>
-      <Col sm={2}>
+      {/* <Col sm={2}  className="mt-2"> */}
         <SearchFilterAgeMin ageMin={ageMin} setAgeMin={setAgeMin} />
-      </Col>
-      <Col sm={2}>
+      {/* </Col> */}
+      {/* <Col sm={2}  className="mt-2"> */}
         <SearchFilterAgeMax ageMax={ageMax} setAgeMax={setAgeMax} />
-      </Col>
-      <Col sm={2}>
+      {/* </Col> */}
+      {/* <Col sm={2}  className="mt-2"> */}
         <SearchFilterResultsPerPage
           resultsPerPage={resultsPerPage}
           setResultsPerPage={setResultsPerPage}
         />
-      </Col>
-      <Col sm={2}>
+      {/* </Col> */}
+      {/* <Col sm={2}  className="mt-2"> */}
         <SearchResultSort sort={sort} setSort={setSort} sortDir={sortDir} setSortDir={setSortDir} />
-      </Col>
-      <Col sm={2}>
-        <Button className="" variant="primary" onClick={handleSubmit}>
+      {/* </Col> */}
+      <Col sm={1}  className="mt-2">
+        <Button className="w-100" variant="primary" onClick={handleSubmit}>
          Filter
         </Button>
       </Col>

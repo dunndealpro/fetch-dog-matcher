@@ -1,6 +1,6 @@
 import { FC } from "react";
 import './SearchFilterResultsPerPage.css'
-import { Form, Button } from "react-bootstrap";
+import { Col, Form, Button } from "react-bootstrap";
 
 // interface ResultPerPage{
 //   resultsPerPage: number;  
@@ -20,6 +20,14 @@ const SearchFilterResultsPerPage: FC<SearchFilterResultsPerPageProps> = ({result
 console.log(resultsPerPage)
   return (
     <>      
+    <Col className="mt-2" >
+      <Form.Label htmlFor="inputAgeMax"># of Results per Page</Form.Label>
+      {/* <br />
+      <Form.Text id="MaxAgeHelpBlock" muted>
+        Enter a number
+      </Form.Text> */}
+    </Col>
+    <Col className="mt-2" >
       <Form.Control
         type="number"
         id="inputResultsPerPage"
@@ -29,11 +37,8 @@ console.log(resultsPerPage)
         min={10}
         max={50}
       />
-      <Form.Label htmlFor="inputAgeMax"># of Results per Page</Form.Label>
-      <br />
-      <Form.Text id="MaxAgeHelpBlock" muted>
-        Enter a number
-      </Form.Text>
+
+    </Col>
     </>
   );
 };

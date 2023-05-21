@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import "./SearchFilterAgeMin.css";
-import { Form, Button } from "react-bootstrap";
+import { Col, Form, Button } from "react-bootstrap";
 
 interface SearchFilterAgeMinProps {
   ageMin: number;
@@ -17,19 +17,23 @@ const SearchFilterAgeMin: FC<SearchFilterAgeMinProps> = ({
 
   return (
     <>
+    <Col className="mt-2">
+      <Form.Label htmlFor="inputAgeMin">Min Age</Form.Label>
+      {/* <Form.Text id="minAgeHelpBlock" muted >
+        Enter a num {">"}= 0
+      </Form.Text> */}
+    </Col>
+    <Col className="mt-2">
       <Form.Control
         type="number"
         id="inputMinAge"
         aria-describedby="ageMinHelpBlock"
         value={ageMin}
         onChange={handleChange}
+        
         min={0}
-      />
-      <Form.Label htmlFor="inputAgeMin">Min Age</Form.Label>
-      <br />
-      <Form.Text id="minAgeHelpBlock" muted>
-        Enter a num {">"}= 0
-      </Form.Text>
+      />    
+    </Col>
     </>
   );
 };

@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import "./FindMatchButton.css";
-import { Button, Modal } from "react-bootstrap";
+import { Button, Container, Modal } from "react-bootstrap";
 
 import MatchModal from "../MatchModal/MatchModal";
 import { propTypes } from "react-bootstrap/esm/Image";
@@ -8,8 +8,6 @@ import { propTypes } from "react-bootstrap/esm/Image";
 interface LikedDogs {
   likedDogs: string[] | undefined;
 }
-
-
 
 interface Dog {
     id: string;
@@ -24,12 +22,18 @@ interface Match {
   match: string;
 }
 
+interface ShowFindMatchButton{
+  showFindMatchButton: boolean
+}
+
 interface FindMatchButtonProps {
   likedDogs: LikedDogs | undefined;
   setLikedDogs:React.Dispatch<React.SetStateAction<LikedDogs | undefined>>
+  className?: string; // Add the className prop
+  showFindMatchButton: boolean
 }
 
-const FindMatchButton: FC<FindMatchButtonProps> = ({ likedDogs,setLikedDogs }) => {
+const FindMatchButton: FC<FindMatchButtonProps> = ({ likedDogs,setLikedDogs, className, showFindMatchButton }) => {
   const [match, setMatch] = useState<Match>();
   const [matchModal, setMatchModal] = useState(false);
   const matchUrl = `https://frontend-take-home-service.fetch.com/dogs/match`;
@@ -74,13 +78,18 @@ if(likedDogs?.likedDogs){
 
   return (
     <>
-      FindMatchButton
-      <Button onClick={findMatch} disabled={!buttonActive}>Get matched!</Button>
+      <Container fluid 
+      // className={`find-match-button ${showFindMatchButton ? 'visible' : ''}`} 
+      >
+
+      <Button className="mt-2 mb-2 " onClick={findMatch} disabled={!buttonActive}>Get matched!</Button>
       <MatchModal
         show={matchModal}
         match={match}
         onHide={handleClose}
       />
+
+      </Container>
     </>
   );
 };

@@ -3,6 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import SearchFilter from "../../Components/SearchFilter/SearchFilter";
 import SearchResultsContainer from "../../Components/SearchResultsContainer/SearchResultsContainer";
 import SearchPageWelcome from "../../Components/SearchPageWelcome/SearchPageWelcome";
+import FindMatchButton from "../../Components/FindMatchButton/FindMatchButton";
 
 // interface ResultPerPage {
 //   resultsPerPage: number;
@@ -11,6 +12,10 @@ import SearchPageWelcome from "../../Components/SearchPageWelcome/SearchPageWelc
 // interface LikedDog{
 //     likedDog: string
 // }
+
+interface showFindMatchButton{
+    showFindMatchButton: boolean
+}
 
 interface LikedDogs{
     likedDogs: string[] | undefined
@@ -26,16 +31,37 @@ interface SearchResult {
 const SearchPage: FC = () => {
   const [selectedBreeds, setSelectedBreeds] = useState<string[]>([]);
   const [searchResults, setSearchResults] = useState<SearchResult>();
-  const [likedDogs, setLikedDogs] = useState<LikedDogs | undefined>()
+  const [likedDogs, setLikedDogs] = useState<LikedDogs | undefined>();
+  const [showFindMatchButton, setShowFindMatchButton] = useState(false)
   
 //   const [resultsPerPage, setResultsPerPage] = useState<ResultPerPage>({
 //     resultsPerPage: 25,
 //   });
   console.log(searchResults);
 
+//   const handleScroll = () => {
+//     const scrollY = window.scrollY;
+//     const windowHeight = window.innerHeight;
+//     const documentHeight = document.documentElement.scrollHeight;
+//     const bottomThreshold = 100; // adjust this value as needed
+
+//     if (scrollY + windowHeight >= documentHeight - bottomThreshold) {
+//       setShowFindMatchButton(true);
+//     } else {
+//       setShowFindMatchButton(false);
+//     }
+//   };
+
   useEffect(() => {
     console.log("search page use effect", searchResults);
   }, [searchResults, likedDogs]);
+
+//   useEffect(() => {
+//     window.addEventListener('scroll', handleScroll);
+//     return () => {
+//       window.removeEventListener('scroll', handleScroll);
+//     };
+//   }, []);
 
   return (
     <>
@@ -50,7 +76,10 @@ const SearchPage: FC = () => {
             // resultsPerPage={resultsPerPage}
             // setResultsPerPage={setResultsPerPage}
           />
+           
+          
         </Row>
+            <FindMatchButton  likedDogs={likedDogs} setLikedDogs={setLikedDogs} showFindMatchButton={showFindMatchButton}/>
       </Container>
       <SearchResultsContainer
         searchResults={searchResults}
@@ -60,6 +89,7 @@ const SearchPage: FC = () => {
         // resultsPerPage={resultsPerPage}
         // setResultsPerPage={setResultsPerPage}
       />
+      
       {/* <SearchResultsContainer searchResults={searchResults} setSearchResults={setSearchResults}/> */}
     </>
   );

@@ -51,9 +51,9 @@ const SearchResultsContainer: FC<SearchResultsContainerProps> = ({
       <br />
       <Container>
       <Row>
-          <Col>
+          {/* <Col>
             <FindMatchButton  likedDogs={likedDogs} setLikedDogs={setLikedDogs}/>
-          </Col>
+          </Col> */}
         </Row>
         <Row className="">
           <Col xs={12}>

@@ -11,12 +11,14 @@ interface SelectBreedsFilterProps {
   setSelectedBreeds: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
-const SelectBreedsFilter: FC<SelectBreedsFilterProps> = ({selectedBreeds, setSelectedBreeds}) => {
+const SelectBreedsFilter: FC<SelectBreedsFilterProps> = ({
+  selectedBreeds,
+  setSelectedBreeds,
+}) => {
   const [allBreeds, setAllBreeds] = useState<string[]>([]);
   const [listBreed, setListBreed] = useState("");
 
   let breedsUrl = `https://frontend-take-home-service.fetch.com/dogs/breeds`;
-
 
   async function getAllBreeds() {
     let breeds = await fetch(breedsUrl, {
@@ -51,18 +53,19 @@ const SelectBreedsFilter: FC<SelectBreedsFilterProps> = ({selectedBreeds, setSel
 
   useEffect(() => {
     getAllBreeds();
-    console.log("GETTING ALL BREEDS")
+    console.log("GETTING ALL BREEDS");
   }, []);
 
-  return <>
-  
-  <Dropdown>
-        <Dropdown.Toggle variant="success" id="dropdown-basic">
-          Select Breeds
-        </Dropdown.Toggle>
-        <Dropdown.Menu>
-          <Form autoComplete="off">
-            {/* <Form.Group className="m-3" controlId="formBasicPassword">
+  return (
+    <>
+      {/* <Container fluid> */}
+        <Dropdown className="w-100 mb-2">
+          <Dropdown.Toggle variant="success" id="dropdown-basic" className="w-100">
+            Select Breeds
+          </Dropdown.Toggle>
+          <Dropdown.Menu className="w-100">
+            <Form autoComplete="off">
+              {/* <Form.Group className="m-3" controlId="formBasicPassword">
               <Form.Label>Search for Breed(case sensitive)</Form.Label>
               <Form.Control
                 className=""
@@ -70,26 +73,28 @@ const SelectBreedsFilter: FC<SelectBreedsFilterProps> = ({selectedBreeds, setSel
                 placeholder="search for Breed"
                 value={listBreed}
                 onChange={handleChange}
-              />
-            </Form.Group> */}
-            <div className="m-2 breed-container">
-              {allBreeds
-                .filter((elem) => elem.includes(listBreed))
-                .map((breed, k) => (
-                  <Form.Group key={k} className="mb-3" controlId={breed}>
-                    <Form.Check
-                      key={k}
-                      type="checkbox"
-                      onChange={handleCheck}
-                      label={breed}
-                    />
-                  </Form.Group>
-                ))}
-            </div>
-          </Form>
-        </Dropdown.Menu>
-      </Dropdown>
-  </>;
+                />
+              </Form.Group> */}
+              <div className="m-2 breed-container">
+                {allBreeds
+                  .filter((elem) => elem.includes(listBreed))
+                  .map((breed, k) => (
+                    <Form.Group key={k} className="mb-3" controlId={breed}>
+                      <Form.Check
+                        key={k}
+                        type="checkbox"
+                        onChange={handleCheck}
+                        label={breed}
+                      />
+                    </Form.Group>
+                  ))}
+              </div>
+            </Form>
+          </Dropdown.Menu>
+        </Dropdown>
+      {/* </Container> */}
+    </>
+  );
 };
 
 export default SelectBreedsFilter;

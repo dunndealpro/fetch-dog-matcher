@@ -141,7 +141,7 @@ const SearchResultItem: FC<SearchResultItemProps> = (props) => {
   return (
     <>
       <Card className="">
-        <Card.Text className="p-2 bg-secondary">{dogInfo?.breed}</Card.Text>
+        <Card.Text className="p-2 rounded-top bg-secondary">{dogInfo?.breed}</Card.Text>
         <Card.Img variant="bot" src={dogInfo?.img} />
         <Card.Body>
           <Accordion>
