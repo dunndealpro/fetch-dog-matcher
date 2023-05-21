@@ -24,18 +24,10 @@ interface MatchModalProps{
 
 const MatchModal: FC<MatchModalProps> = (props) =>{
 
-    console.log("match! ", props.match)
-
-//     const [matchInfo, setMatchInfo] = useState<Dog>()
-
-    // const matchInfoUrl = `https://frontend-take-home-service.fetch.com/dogs`;
-    // const reqBodyParams = props.match;  
-
     const matchInfoUrl = `https://frontend-take-home-service.fetch.com/dogs`;
     const [matchInfo, setMatchInfo] = useState<Dog>()
 
     async function getMatchInfo() {
-        console.log(props.match)
         if(props.match){
         const reqBodyParams = [props.match?.match]
         const info = await fetch(matchInfoUrl, {
@@ -46,7 +38,6 @@ const MatchModal: FC<MatchModalProps> = (props) =>{
           },
           body: JSON.stringify(reqBodyParams),
         }).then((res) => res.json());
-        console.log(info);
         setMatchInfo(info[0]);
         }
       }
@@ -74,9 +65,7 @@ useEffect(()=>{
         <div>Age: <strong>{matchInfo && matchInfo?.age}</strong></div>
         <div>Current Location: (feature coming soon)</div>
       </Modal.Body>
-      {/* <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
-      </Modal.Footer> */}
+    
     </Modal>
         </>
     )
