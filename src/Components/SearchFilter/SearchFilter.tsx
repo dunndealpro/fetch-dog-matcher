@@ -109,7 +109,7 @@ const SearchFilter: FC<SearchFilterProps> = ({
       </Col>
       <Col sm={2}>
         <Button className="" variant="primary" onClick={handleSubmit}>
-          Submit
+         Filter
         </Button>
       </Col>
       <Modal show={show} onHide={handleClose}>

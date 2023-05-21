@@ -1,6 +1,7 @@
 import { FC, useState, useEffect, ChangeEvent } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import Image from "react-bootstrap";
 import { Accordion } from "react-bootstrap";
 import { Container, Col, Row } from "react-bootstrap";
 import Form from 'react-bootstrap/Form';

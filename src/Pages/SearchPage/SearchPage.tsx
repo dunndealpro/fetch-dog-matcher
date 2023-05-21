@@ -27,6 +27,7 @@ const SearchPage: FC = () => {
   const [selectedBreeds, setSelectedBreeds] = useState<string[]>([]);
   const [searchResults, setSearchResults] = useState<SearchResult>();
   const [likedDogs, setLikedDogs] = useState<LikedDogs | undefined>()
+  
 //   const [resultsPerPage, setResultsPerPage] = useState<ResultPerPage>({
 //     resultsPerPage: 25,
 //   });

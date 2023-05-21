@@ -1,8 +1,9 @@
-import { FC, useState, useEffect } from "react";
+import { FC, useState, useEffect, SetStateAction } from "react";
 import "./SearchResultsContainer.css";
 import { Container, Row, Col } from "react-bootstrap";
 import SearchResultItem from "../SearchResultItem/SearchResultItem";
 import ResultsPagination from "../ResultsPagination/ResultsPagination";
+import FindMatchButton from "../FindMatchButton/FindMatchButton";
 
 interface SearchResult {
   resultIds: Array<any>;
@@ -12,32 +13,34 @@ interface SearchResult {
 }
 
 // interface ResultPerPage{
-//     resultsPerPage: number;  
+//     resultsPerPage: number;
 //   }
 
 // interface LikedDog{
 //   likedDog: string
 // }
 
-interface LikedDogs{
-  likedDogs: string[] | undefined
+interface LikedDogs {
+  likedDogs: string[] | undefined;
 }
 
 interface SearchResultsContainerProps {
-    searchResults: SearchResult | undefined;
-    setSearchResults: React.Dispatch<React.SetStateAction<SearchResult | undefined>>;
-    // resultsPerPage: ResultPerPage;
-    // setResultsPerPage:  React.Dispatch<React.SetStateAction<ResultPerPage>>;
-    likedDogs?: LikedDogs;
-    setLikedDogs: React.Dispatch<React.SetStateAction<LikedDogs | undefined>>;
+  searchResults: SearchResult | undefined;
+  setSearchResults: React.Dispatch<
+    React.SetStateAction<SearchResult | undefined>
+  >;
+  // resultsPerPage: ResultPerPage;
+  // setResultsPerPage:  React.Dispatch<React.SetStateAction<ResultPerPage>>;
+  likedDogs?: LikedDogs;
+  setLikedDogs: React.Dispatch<React.SetStateAction<LikedDogs | undefined>>;
 }
 
 const SearchResultsContainer: FC<SearchResultsContainerProps> = ({
   searchResults,
   setSearchResults,
   likedDogs,
-  setLikedDogs
-//   resultsPerPage
+  setLikedDogs,
+  //   resultsPerPage
 }) => {
   console.log(searchResults?.resultIds);
 
@@ -46,10 +49,18 @@ const SearchResultsContainer: FC<SearchResultsContainerProps> = ({
       SearchResultsContainer
       <br />
       <br />
-      <Container >
+      <Container>
+      <Row>
+          <Col>
+            <FindMatchButton  likedDogs={likedDogs} setLikedDogs={setLikedDogs}/>
+          </Col>
+        </Row>
         <Row className="">
-          <Col xs={12} >
-            <ResultsPagination searchResult={searchResults} setSearchResults={setSearchResults} />
+          <Col xs={12}>
+            <ResultsPagination
+              searchResult={searchResults}
+              setSearchResults={setSearchResults}
+            />
           </Col>
         </Row>
         <Row className="mb-2">
@@ -65,9 +76,13 @@ const SearchResultsContainer: FC<SearchResultsContainerProps> = ({
             </Col>
           ))}
         </Row>
+       
         <Row className="">
-          <Col xs={12} >
-            <ResultsPagination searchResult={searchResults} setSearchResults={setSearchResults} />
+          <Col xs={12}>
+            <ResultsPagination
+              searchResult={searchResults}
+              setSearchResults={setSearchResults}
+            />
           </Col>
         </Row>
       </Container>
