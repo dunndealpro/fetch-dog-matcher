@@ -42,11 +42,26 @@ interface SearchResultItemProps {
 const SearchResultItem: FC<SearchResultItemProps> = (props) => {
   const [dogInfo, setDogInfo] = useState<Dog>();
   const [display, setDisplay] = useState("I am not sure...")
+  const [isLiked, setIsLiked] = useState(false)
 
   let dogSearchUrl = `https://frontend-take-home-service.fetch.com/dogs`;
 
-  const reqBodyParams = [props.dog];
-//   console.log(props.dog);
+  const reqBodyParams = [props.dog];  
+  
+  function checkForLikes(dogId: string | undefined){
+    if( props.likedDogs === undefined){
+      setIsLiked(false)      
+    }else{
+      const likedDogTemp = props.likedDogs.likedDogs
+      const idx = likedDogTemp?.indexOf(dogId || '')
+      if(idx !== undefined && idx > -1){
+        setIsLiked(true)
+      }else{
+        setIsLiked(false)
+        
+      }
+  }
+  }
 
   async function getDog() {
     let dogResults = await fetch(dogSearchUrl, {
@@ -57,22 +72,18 @@ const SearchResultItem: FC<SearchResultItemProps> = (props) => {
       },
       body: JSON.stringify(reqBodyParams),
     }).then((res) => res.json());
-    setDogInfo(dogResults[0]);
-    // console.log(dogResults);
+    setDogInfo(dogResults[0])
+    checkForLikes(dogResults[0].id)
   }
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-   console.log(e.target.checked)
-   console.log(e.target.id)
    
    let temp = props.likedDogs?.likedDogs
-  //  temp = props.likedDogs
-   console.log(temp)
    if(e.target.checked){
     setDisplay("I like this doggo!")
+    setIsLiked(true)
     if(temp === undefined){
       let tempNew = [e.target.id]
-      console.log(tempNew)
       props.setLikedDogs({likedDogs: tempNew})
     }
     if (temp){
@@ -81,28 +92,21 @@ const SearchResultItem: FC<SearchResultItemProps> = (props) => {
     }    
    }else{
     setDisplay("I am not sure...")
+    setIsLiked(false)
     let idx = temp?.indexOf(e.target.id)
-    console.log(idx)
     if(idx=== undefined || idx === -1){
-      console.log("not found")
       return
     }else{
-      console.log("splicing")
       temp?.splice(idx, 1)
       props.setLikedDogs({likedDogs: temp})
     }
-    
-
-
    }
-   console.log(props.likedDogs)
 }
 
   useEffect(() => {
     getDog();
-    // console.log(dogInfo);
     
-  }, [props.searchResult, props.likedDogs]);
+  }, [props.searchResult, props.likedDogs, isLiked]);
 
   console.log(props.likedDogs)
 
@@ -131,6 +135,7 @@ const SearchResultItem: FC<SearchResultItemProps> = (props) => {
         type="switch"
         id={dogInfo?.id}
         label={display}
+        checked={isLiked}
         onChange={e => handleChange(e)}
       />
         </Card.Body>

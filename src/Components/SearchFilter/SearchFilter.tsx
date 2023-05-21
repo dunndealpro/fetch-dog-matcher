@@ -46,7 +46,7 @@ const SearchFilter: FC<SearchFilterProps> = ({
   const [ageMin, setAgeMin] = useState<number>(0);
   const [ageMax, setAgeMax] = useState<number>(31);
   const [show, setShow] = useState(false);
-  const [resultsPerPage, setResultsPerPage] = useState<number>(25);
+  const [resultsPerPage, setResultsPerPage] = useState<number>(10);
   const [sort, setSort] = useState<string>("breed");
   const [sortDir, setSortDir] = useState<string>("asc");
 

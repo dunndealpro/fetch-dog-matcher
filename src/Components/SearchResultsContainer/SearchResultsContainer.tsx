@@ -56,7 +56,7 @@ const SearchResultsContainer: FC<SearchResultsContainerProps> = ({
           {searchResults?.resultIds.map((result, k) => (
             <Col className="mb-2" lg={2} md={3} sm={6}>
               <SearchResultItem
-                key={k}
+                key={result}
                 dog={result}
                 searchResult={searchResults}
                 likedDogs={likedDogs}

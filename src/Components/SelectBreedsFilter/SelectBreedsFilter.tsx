@@ -51,6 +51,7 @@ const SelectBreedsFilter: FC<SelectBreedsFilterProps> = ({selectedBreeds, setSel
 
   useEffect(() => {
     getAllBreeds();
+    console.log("GETTING ALL BREEDS")
   }, []);
 
   return <>
