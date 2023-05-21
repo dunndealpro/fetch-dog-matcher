@@ -26,6 +26,7 @@ const MatchModal: FC<MatchModalProps> = (props) =>{
 
     const matchInfoUrl = `https://frontend-take-home-service.fetch.com/dogs`;
     const [matchInfo, setMatchInfo] = useState<Dog>()
+    const [matchLocationInfo, setMatchLocationInfo] = useState<Array<any>>([])
 
     async function getMatchInfo() {
         if(props.match){
@@ -39,8 +40,27 @@ const MatchModal: FC<MatchModalProps> = (props) =>{
           body: JSON.stringify(reqBodyParams),
         }).then((res) => res.json());
         setMatchInfo(info[0]);
+        getLocation(info[0].zip_code)
         }
       }
+
+      async function getLocation(location: string | undefined){
+        const locationUrl = `https://frontend-take-home-service.fetch.com/locations`;
+        const locationParams = [location]
+        console.log(locationParams)
+        if(locationParams !== undefined){
+        let locationResults = await fetch(locationUrl, {
+          method: "POST",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(locationParams),
+          
+      }).then((res) => res.json());
+      console.log(locationResults)
+      setMatchLocationInfo(locationResults)}
+    }
     
 useEffect(()=>{
     getMatchInfo()
@@ -64,6 +84,17 @@ useEffect(()=>{
         <div>Breed: <strong>{matchInfo && matchInfo?.breed}</strong></div>
         <div>Age: <strong>{matchInfo && matchInfo?.age}</strong></div>
         <div>Current Location: (feature coming soon)</div>
+        
+          <br />
+          <div>
+            City: <strong>{matchLocationInfo[0]?.city}</strong>
+          </div>
+          <div>
+            County: <strong>{matchLocationInfo[0]?.county}</strong>
+          </div>
+          <div>
+            State: <strong>{matchLocationInfo[0]?.state}</strong>
+          </div>
       </Modal.Body>
     
     </Modal>

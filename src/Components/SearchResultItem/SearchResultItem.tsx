@@ -7,6 +7,7 @@ import { Container, Col, Row } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 
 import "./SearchResultItem.css";
+import { idText } from "typescript";
 
 interface LikedDogs {
   likedDogs: string[] | undefined;
@@ -23,6 +24,15 @@ interface Dog {
   age: number;
   zip_code: string;
   breed: string;
+}
+
+interface Location {
+  zip_code: string
+  latitude: number
+  longitude: number
+  city: string
+  state: string
+  county: string
 }
 
 interface SearchResult {
@@ -43,10 +53,13 @@ const SearchResultItem: FC<SearchResultItemProps> = (props) => {
   const [dogInfo, setDogInfo] = useState<Dog>();
   const [display, setDisplay] = useState("I am not sure...");
   const [isLiked, setIsLiked] = useState(false);
+  const [locationInfo, setLocationInfo] = useState<Array<any>>([])
 
   let dogSearchUrl = `https://frontend-take-home-service.fetch.com/dogs`;
+  let locationUrl = `https://frontend-take-home-service.fetch.com/locations`;
 
   const reqBodyParams = [props.dog];
+  // const locationParams = [dogInfo?.zip_code]
 
   function checkForLikes(dogId: string | undefined) {
     if (props.likedDogs === undefined) {
@@ -73,7 +86,25 @@ const SearchResultItem: FC<SearchResultItemProps> = (props) => {
     }).then((res) => res.json());
     setDogInfo(dogResults[0]);
     checkForLikes(dogResults[0].id);
+    getLocation(dogResults[0].zip_code)
   }
+
+  async function getLocation(location: string | undefined){
+    console.log(location)
+    const locationParams = [location]
+    if(locationParams !== undefined && locationParams){
+    let locationResults = await fetch(locationUrl, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(locationParams),
+      
+  }).then((res) => res.json());
+  console.log(locationResults)
+  setLocationInfo(locationResults)}
+}
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     let temp = props.likedDogs?.likedDogs;
@@ -103,7 +134,7 @@ const SearchResultItem: FC<SearchResultItemProps> = (props) => {
 
   useEffect(() => {
     getDog();
-  }, [props.searchResult, props.likedDogs, isLiked]);
+  }, [props.searchResult, props.likedDogs, isLiked,]);
 
   console.log(props.likedDogs);
 
@@ -119,7 +150,10 @@ const SearchResultItem: FC<SearchResultItemProps> = (props) => {
               <Accordion.Body>
                 <Card.Text>
                   <div>Age: <strong>{dogInfo?.age}</strong></div>
-                  <div>Location: <strong>{dogInfo?.zip_code}</strong></div>
+                  <br />
+                  <div>City: <strong>{locationInfo[0]?.city}</strong></div>
+                  <div>County: <strong>{locationInfo[0]?.county}</strong></div>
+                  <div>State: <strong>{locationInfo[0]?.state}</strong></div>
 
                   {/* Hi, I am a {dogInfo?.age} year old {dogInfo?.breed} and I am
                   currently located in {dogInfo?.zip_code} */}

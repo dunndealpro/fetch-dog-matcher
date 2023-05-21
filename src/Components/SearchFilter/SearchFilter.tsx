@@ -86,7 +86,7 @@ const SearchFilter: FC<SearchFilterProps> = ({
 
   return (
     <>
-      <Col>
+      <Col sm={2}>
         <SelectBreedsFilter
           selectedBreeds={selectedBreeds}
           setSelectedBreeds={setSelectedBreeds}
@@ -104,7 +104,7 @@ const SearchFilter: FC<SearchFilterProps> = ({
           setResultsPerPage={setResultsPerPage}
         />
       </Col>
-      <Col>
+      <Col sm={2}>
         <SearchResultSort sort={sort} setSort={setSort} sortDir={sortDir} setSortDir={setSortDir} />
       </Col>
       <Col sm={2}>

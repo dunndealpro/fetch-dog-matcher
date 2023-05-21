@@ -2,25 +2,26 @@ import React, { FC } from "react";
 import "./SearchFilterAgeMin.css";
 import { Form, Button } from "react-bootstrap";
 
-interface SearchFilterAgeMinProps{
-    ageMin: number;
-    setAgeMin: React.Dispatch<React.SetStateAction<number>>
+interface SearchFilterAgeMinProps {
+  ageMin: number;
+  setAgeMin: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const SearchFilterAgeMin: FC<SearchFilterAgeMinProps> = ({ageMin, setAgeMin}) => {
-
-    function handleChange(evt: { target: { value: any; }; }) {
-        setAgeMin( evt.target.value );
-        
-      }
+const SearchFilterAgeMin: FC<SearchFilterAgeMinProps> = ({
+  ageMin,
+  setAgeMin,
+}) => {
+  function handleChange(evt: { target: { value: any } }) {
+    setAgeMin(evt.target.value);
+  }
 
   return (
-    <>      
+    <>
       <Form.Control
         type="number"
         id="inputMinAge"
         aria-describedby="ageMinHelpBlock"
-        value={ageMin} 
+        value={ageMin}
         onChange={handleChange}
         min={0}
       />
