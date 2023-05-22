@@ -2,7 +2,7 @@ import { FC } from "react";
 import './SearchFilterResultsPerPage.css'
 import { Col, Form, Button } from "react-bootstrap";
 
-// interface ResultPerPage{
+// interface ResultsPerPage{
 //   resultsPerPage: number;  
 // }
 

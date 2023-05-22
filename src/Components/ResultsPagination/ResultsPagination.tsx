@@ -2,6 +2,10 @@ import { FC } from "react";
 import Pagination from "react-bootstrap/Pagination";
 import "./ResultsPagination.css";
 
+// interface ResultsPerPage{
+//   resultsPerPage: number
+// }
+
 interface SearchResult {
   resultIds: Array<any>;
   total: number;
@@ -11,18 +15,28 @@ interface SearchResult {
 
 interface ResultsPaginationProps {
   searchResult: SearchResult | undefined;
-  setSearchResults: React.Dispatch<React.SetStateAction<SearchResult | undefined>
-  >;
+  setSearchResults: React.Dispatch<React.SetStateAction<SearchResult | undefined>>;
+  resultsPerPage: number
 }
 
 const ResultsPagination: FC<ResultsPaginationProps> = ({
   searchResult,
   setSearchResults,
+  resultsPerPage
 }) => {
 
-  let searchUrl = `https://frontend-take-home-service.fetch.com`;
-  let urlNext = searchUrl+searchResult?.next;
-  let urlPrev = searchUrl+searchResult?.prev;
+  const searchUrl = `https://frontend-take-home-service.fetch.com`;
+  const urlNext = searchUrl+searchResult?.next;
+  const urlPrev = searchUrl+searchResult?.prev;
+
+
+  
+  const totalPages = searchResult && searchResult.total && resultsPerPage
+  ? Math.ceil(searchResult.total / resultsPerPage)
+  : 0
+
+  
+
   async function handleNextClick() {
     if (urlNext) {
         console.log(urlNext)
@@ -46,8 +60,8 @@ const ResultsPagination: FC<ResultsPaginationProps> = ({
   }
   return (
     <>
-      <div>
-        
+      <div>total pages:
+        {totalPages}
         <Pagination className="d-flex justify-content-center">
           {/* <Pagination.First /> */}
           <Pagination.Prev onClick={handlePrevClick} />

@@ -1,0 +1,18 @@
+.breed-container{
+    /* width: 50vw; */
+    height: 60vh;
+    overflow-y: scroll;
+    
+}
+
+.breed-bg-col{
+    background-color: rgb(159, 222, 240);
+}
+
+.breed-drop {
+    background-color: rgb(159, 222, 240);
+}
+
+.breed-drop:hover{
+    background-color: rgb(13, 191, 240);
+}

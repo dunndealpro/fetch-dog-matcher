@@ -76,7 +76,7 @@ useEffect(()=>{
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-            <div className="text-center w-100">Congrats, you have been mathced with <strong>{matchInfo && matchInfo?.name}</strong></div>
+            <div className="text-center w-100">Congrats, you have been matched with <strong>{matchInfo && matchInfo?.name}</strong></div>
         </Modal.Title>
       </Modal.Header>
       <Modal.Body className="text-center">

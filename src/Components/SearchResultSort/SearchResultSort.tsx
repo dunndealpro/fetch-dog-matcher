@@ -48,12 +48,12 @@ const SearchResultSort: FC<SearchResultSortProps> = ({
         Sort By:
         </Col>
           <Col xs={3} sm={3} md={2} lg={2}  xl={1} xxl={1} className="mt-2" >
-            <Dropdown className="">
-              <Dropdown.Toggle variant="success" id="dropdown-basic">
+            <Dropdown className="sort-drop rounded">
+              <Dropdown.Toggle className="sort-drop rounded" variant="" id="">
                 {sort}
               </Dropdown.Toggle>
 
-              <Dropdown.Menu>
+              <Dropdown.Menu >
                 <Dropdown.Item onClick={handleOnClickAge}>Age</Dropdown.Item>
                 <Dropdown.Item onClick={handleOnClickBreed}>
                   Breed
@@ -63,8 +63,8 @@ const SearchResultSort: FC<SearchResultSortProps> = ({
             </Dropdown>
           </Col>
           <Col xs={3} sm={3} md={2} lg={2}  xl={1} xxl={1} className="mt-2" >
-            <Dropdown className="">
-              <Dropdown.Toggle variant="success" id="dropdown-basic">
+            <Dropdown className="sort-drop rounded">
+              <Dropdown.Toggle className="sort-drop rounded" variant="" id="">
                {sortDir}
               </Dropdown.Toggle>
 

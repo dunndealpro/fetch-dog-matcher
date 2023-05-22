@@ -26,7 +26,7 @@ const NavBar: FC<NavBarProps> = ({ setUser }) => {
 
   return (
     <>
-      <Navbar sticky="top" className="bg-secondary">
+      <Navbar sticky="top" className="navbar-col">
         <Navbar.Brand className="ms-2"> Dog-Matcher</Navbar.Brand>
         <Nav className="ms-auto me-2" defaultActiveKey="/">
           <NavDropdown align="end" title={title} id="basic-nav-dropdown">

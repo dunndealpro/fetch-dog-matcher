@@ -1,5 +1,12 @@
-.breed-container{
-    /* width: 50vw; */
-    height: 60vh;
-    overflow-y: scroll;
+.btn-filter{
+    background-color: rgb(178, 51, 204);
+    border-color: rgb(178, 51, 204) ;
+    color:white
+}
+
+.btn-filter:hover{
+    background-color: rgb(139, 37, 160);
+    border-color: rgb(201, 201, 201) ;
+    color: white;
+    font-weight: bold;
 }

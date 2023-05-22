@@ -1,17 +1,17 @@
 import { FC } from "react";
-import "./Footer.css";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { BsLinkedin } from "react-icons/bs";
 import { BsGithub } from "react-icons/bs";
 import { MdOutlineEmail } from "react-icons/md";
+import "./Footer.css";
 
 const Footer: FC = () => {
   return (
     <>
       <div className="">
         <Navbar
-          className="bg-secondary p-1 nav-bg justify-content-center"
+          className="footer-col p-2 justify-content-center"
           id="footer"
         >
           <Nav variant="" className="">

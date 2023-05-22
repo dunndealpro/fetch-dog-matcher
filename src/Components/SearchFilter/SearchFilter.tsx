@@ -13,7 +13,7 @@ import SearchFilterResultsPerPage from "../SearchFilterResultsPerPage/SearchFilt
 import Modal from "react-bootstrap/Modal";
 import SearchResultSort from "../SearchResultSort/SearchResultSort";
 
-// interface ResultPerPage{
+// interface ResultsPerPage{
 //   resultsPerPage: number;  
 // }
 
@@ -25,8 +25,8 @@ interface SearchResult {
 }
 
 interface SearchFilterProps {
-  // resultsPerPage: number
-  // setResultsPerPage: React.Dispatch<React.SetStateAction<ResultPerPage>>;
+  resultsPerPage: number
+  setResultsPerPage: React.Dispatch<React.SetStateAction<number>>;
   
   selectedBreeds: string[];
   setSelectedBreeds: React.Dispatch<React.SetStateAction<string[]>>;
@@ -40,13 +40,13 @@ const SearchFilter: FC<SearchFilterProps> = ({
   selectedBreeds,
   setSelectedBreeds,
   setSearchResults,
-  // resultsPerPage,
-  // setResultsPerPage
+  resultsPerPage,
+  setResultsPerPage
 }) => {
   const [ageMin, setAgeMin] = useState<number>(0);
   const [ageMax, setAgeMax] = useState<number>(31);
   const [show, setShow] = useState(false);
-  const [resultsPerPage, setResultsPerPage] = useState<number>(10);
+  // const [resultsPerPage, setResultsPerPage] = useState<number>(25);
   const [sort, setSort] = useState<string>("breed");
   const [sortDir, setSortDir] = useState<string>("asc");
 
@@ -83,6 +83,7 @@ const SearchFilter: FC<SearchFilterProps> = ({
     console.log(results);
     setSearchResults(results);
   }
+  console.log('SEARCH FILTER');
 
   return (
     <>
@@ -108,7 +109,7 @@ const SearchFilter: FC<SearchFilterProps> = ({
         <SearchResultSort sort={sort} setSort={setSort} sortDir={sortDir} setSortDir={setSortDir} />
       {/* </Col> */}
       <Col sm={12} md={12} lg={4}  xl={3} xxl={1} className="mt-2 text-center ">
-        <Button className="w-100 " variant="primary" onClick={handleSubmit}>
+        <Button className="btn-filter w-100 " variant="" onClick={handleSubmit}>
          Filter
         </Button>
       </Col>

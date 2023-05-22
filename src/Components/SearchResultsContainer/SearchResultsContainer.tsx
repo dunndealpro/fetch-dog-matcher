@@ -12,9 +12,9 @@ interface SearchResult {
   prev: string | undefined;
 }
 
-// interface ResultPerPage{
-//     resultsPerPage: number;
-//   }
+// interface ResultsPerPage{
+//   resultsPerPage: number
+// }
 
 // interface LikedDog{
 //   likedDog: string
@@ -29,8 +29,8 @@ interface SearchResultsContainerProps {
   setSearchResults: React.Dispatch<
     React.SetStateAction<SearchResult | undefined>
   >;
-  // resultsPerPage: ResultPerPage;
-  // setResultsPerPage:  React.Dispatch<React.SetStateAction<ResultPerPage>>;
+  resultsPerPage: number;
+  // setResultsPerPage:  React.Dispatch<React.SetStateAction<ResultsPerPage>>;
   likedDogs?: LikedDogs;
   setLikedDogs: React.Dispatch<React.SetStateAction<LikedDogs | undefined>>;
 }
@@ -40,13 +40,13 @@ const SearchResultsContainer: FC<SearchResultsContainerProps> = ({
   setSearchResults,
   likedDogs,
   setLikedDogs,
-  //   resultsPerPage
+    resultsPerPage
 }) => {
   console.log(searchResults?.resultIds);
 
   return (
     <>
-      SearchResultsContainer
+      <h1>Number of results: {searchResults?.total}</h1>
       <br />
       <br />
       <Container>
@@ -60,6 +60,7 @@ const SearchResultsContainer: FC<SearchResultsContainerProps> = ({
             <ResultsPagination
               searchResult={searchResults}
               setSearchResults={setSearchResults}
+              resultsPerPage={resultsPerPage}
             />
           </Col>
         </Row>
@@ -82,7 +83,9 @@ const SearchResultsContainer: FC<SearchResultsContainerProps> = ({
             <ResultsPagination
               searchResult={searchResults}
               setSearchResults={setSearchResults}
+              resultsPerPage={resultsPerPage}
             />
+
           </Col>
         </Row>
       </Container>

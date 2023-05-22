@@ -59,11 +59,11 @@ const SelectBreedsFilter: FC<SelectBreedsFilterProps> = ({
   return (
     <>
       {/* <Container fluid> */}
-        <Dropdown className="w-100 mb-2">
-          <Dropdown.Toggle variant="success" id="dropdown-basic" className="w-100">
+        <Dropdown className="breed-drop mb-2 rounded">
+          <Dropdown.Toggle variant="" id="dropdown-basic" className="breed-drop w-100 ">
             Select Breeds
           </Dropdown.Toggle>
-          <Dropdown.Menu className="w-100">
+          <Dropdown.Menu className="w-100 p-1 breed-bg-col">
             <Form autoComplete="off">
               {/* <Form.Group className="m-3" controlId="formBasicPassword">
               <Form.Label>Search for Breed(case sensitive)</Form.Label>
@@ -75,7 +75,7 @@ const SelectBreedsFilter: FC<SelectBreedsFilterProps> = ({
                 onChange={handleChange}
                 />
               </Form.Group> */}
-              <div className="m-2 breed-container">
+              <div className="m-2 breed-container ">
                 {allBreeds
                   .filter((elem) => elem.includes(listBreed))
                   .map((breed, k) => (

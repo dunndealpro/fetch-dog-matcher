@@ -1,0 +1,12 @@
+.find-match-button-float{
+    /* position: relative; */
+    /* bottom: 50px; */
+    transform: translate(-60px,-60px);
+    margin-left: auto;
+    width: 30vw;
+    height: 20vw;
+}
+
+.invisible {
+    display: none;
+  }

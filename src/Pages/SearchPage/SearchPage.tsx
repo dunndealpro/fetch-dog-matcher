@@ -4,9 +4,10 @@ import SearchFilter from "../../Components/SearchFilter/SearchFilter";
 import SearchResultsContainer from "../../Components/SearchResultsContainer/SearchResultsContainer";
 import SearchPageWelcome from "../../Components/SearchPageWelcome/SearchPageWelcome";
 import FindMatchButton from "../../Components/FindMatchButton/FindMatchButton";
+import FindMatchButtonFloat from "../../Components/FindMatchButtonFloat/FindMatchButtonFloat";
 
-// interface ResultPerPage {
-//   resultsPerPage: number;
+// interface ResultsPerPage {
+//   resultsPerPage: number ;
 // }
 
 // interface LikedDog{
@@ -33,48 +34,33 @@ const SearchPage: FC = () => {
   const [searchResults, setSearchResults] = useState<SearchResult>();
   const [likedDogs, setLikedDogs] = useState<LikedDogs | undefined>();
   const [showFindMatchButton, setShowFindMatchButton] = useState(false)
+  const [resultsPerPage, setResultsPerPage] = useState<number>(25);
   
-//   const [resultsPerPage, setResultsPerPage] = useState<ResultPerPage>({
+//   const [resultsPerPage, setResultsPerPage] = useState<ResultsPerPage>({
 //     resultsPerPage: 25,
 //   });
   console.log(searchResults);
 
-//   const handleScroll = () => {
-//     const scrollY = window.scrollY;
-//     const windowHeight = window.innerHeight;
-//     const documentHeight = document.documentElement.scrollHeight;
-//     const bottomThreshold = 100; // adjust this value as needed
 
-//     if (scrollY + windowHeight >= documentHeight - bottomThreshold) {
-//       setShowFindMatchButton(true);
-//     } else {
-//       setShowFindMatchButton(false);
-//     }
-//   };
 
   useEffect(() => {
     console.log("search page use effect", searchResults);
   }, [searchResults, likedDogs]);
 
-//   useEffect(() => {
-//     window.addEventListener('scroll', handleScroll);
-//     return () => {
-//       window.removeEventListener('scroll', handleScroll);
-//     };
-//   }, []);
+//  
 
   return (
     <>
       <SearchPageWelcome />
       <Container>
-        <Row className="bg-info rounded p-2 m-1 justify-content-center">
+        <Row className="bg-light rounded p-2 m-1 justify-content-center">
           <SearchFilter
             selectedBreeds={selectedBreeds}
             setSelectedBreeds={setSelectedBreeds}
             searchResults={searchResults}
             setSearchResults={setSearchResults}
-            // resultsPerPage={resultsPerPage}
-            // setResultsPerPage={setResultsPerPage}
+            resultsPerPage={resultsPerPage}
+            setResultsPerPage={setResultsPerPage}
           />
            
           
@@ -86,10 +72,10 @@ const SearchPage: FC = () => {
         setSearchResults={setSearchResults}
         likedDogs={likedDogs}
         setLikedDogs={setLikedDogs}
-        // resultsPerPage={resultsPerPage}
+        resultsPerPage={resultsPerPage}
         // setResultsPerPage={setResultsPerPage}
       />
-      
+      <FindMatchButtonFloat  likedDogs={likedDogs} setLikedDogs={setLikedDogs} showFindMatchButtonFloat={showFindMatchButton}/>
       {/* <SearchResultsContainer searchResults={searchResults} setSearchResults={setSearchResults}/> */}
     </>
   );
