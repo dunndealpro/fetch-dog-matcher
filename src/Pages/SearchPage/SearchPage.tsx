@@ -65,7 +65,7 @@ const SearchPage: FC = () => {
            
           
         </Row>
-            <FindMatchButton  likedDogs={likedDogs} setLikedDogs={setLikedDogs} showFindMatchButton={showFindMatchButton}/>
+            {/* <FindMatchButton  likedDogs={likedDogs} setLikedDogs={setLikedDogs} showFindMatchButton={showFindMatchButton}/> */}
       </Container>
       {searchResults?
       <SearchResultsContainer

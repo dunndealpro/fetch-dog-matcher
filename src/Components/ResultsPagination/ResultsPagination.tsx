@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useState, useEffect } from "react";
 import Pagination from "react-bootstrap/Pagination";
 import "./ResultsPagination.css";
 import { Container, Row, Col } from "react-bootstrap";
@@ -61,6 +61,10 @@ const ResultsPagination: FC<ResultsPaginationProps> = ({
       setCurrentPage(currentPage - 1);
     }
   }
+
+  useEffect(()=>{
+    
+  },[])
   return (
     <>
       <Container>

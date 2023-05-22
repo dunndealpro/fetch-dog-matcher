@@ -43,8 +43,8 @@ const SearchFilter: FC<SearchFilterProps> = ({
   resultsPerPage,
   setResultsPerPage
 }) => {
-  const [ageMin, setAgeMin] = useState<number>(0);
-  const [ageMax, setAgeMax] = useState<number>(31);
+  const [ageMin, setAgeMin] = useState<number>(5);
+  const [ageMax, setAgeMax] = useState<number>(15);
   const [show, setShow] = useState(false);
   // const [resultsPerPage, setResultsPerPage] = useState<number>(25);
   const [sort, setSort] = useState<string>("breed");
@@ -110,7 +110,7 @@ const SearchFilter: FC<SearchFilterProps> = ({
       {/* </Col> */}
       <Col sm={12} md={12} lg={4}  xl={3} xxl={1} className="mt-2 text-center ">
         <Button className="btn-filter w-100 " variant="" onClick={handleSubmit}>
-         Filter
+         Search for Dogs
         </Button>
       </Col>
       <Modal show={show} onHide={handleClose}>
