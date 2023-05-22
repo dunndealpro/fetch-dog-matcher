@@ -46,9 +46,9 @@ const SearchResultsContainer: FC<SearchResultsContainerProps> = ({
 
   return (
     <>
-      <h1>Number of results: {searchResults?.total}</h1>
+      {/* <h1>Number of results: {searchResults?.total}</h1>
       <br />
-      <br />
+      <br /> */}
       <Container>
       <Row>
           {/* <Col>

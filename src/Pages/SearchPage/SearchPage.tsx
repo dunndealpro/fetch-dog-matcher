@@ -67,6 +67,7 @@ const SearchPage: FC = () => {
         </Row>
             <FindMatchButton  likedDogs={likedDogs} setLikedDogs={setLikedDogs} showFindMatchButton={showFindMatchButton}/>
       </Container>
+      {searchResults?
       <SearchResultsContainer
         searchResults={searchResults}
         setSearchResults={setSearchResults}
@@ -74,7 +75,9 @@ const SearchPage: FC = () => {
         setLikedDogs={setLikedDogs}
         resultsPerPage={resultsPerPage}
         // setResultsPerPage={setResultsPerPage}
-      />
+      />:""
+      
+    }
       <FindMatchButtonFloat  likedDogs={likedDogs} setLikedDogs={setLikedDogs} showFindMatchButtonFloat={showFindMatchButton}/>
       {/* <SearchResultsContainer searchResults={searchResults} setSearchResults={setSearchResults}/> */}
     </>

@@ -138,7 +138,7 @@ const SearchResultItem: FC<SearchResultItemProps> = (props) => {
   return (
     <>
       <Card className="">
-        <Card.Text className="p-2 rounded-top bg-secondary">
+        <Card.Text className="p-2 rounded-top ">
           {dogInfo?.breed}
         </Card.Text>
         <Card.Img variant="bot" src={dogInfo?.img} />
@@ -147,7 +147,6 @@ const SearchResultItem: FC<SearchResultItemProps> = (props) => {
             <Accordion.Item eventKey="0">
               <Accordion.Header>Meet {dogInfo?.name}</Accordion.Header>
               <Accordion.Body className="align-left">
-                {/* <Card.Text className="align-left"> */}
                   <div>
                     Breed: <strong>{dogInfo?.breed}</strong>
                   </div>
@@ -165,9 +164,6 @@ const SearchResultItem: FC<SearchResultItemProps> = (props) => {
                     State: <strong>{locationInfo[0]?.state}</strong>
                   </div>
 
-                  {/* Hi, I am a {dogInfo?.age} year old {dogInfo?.breed} and I am
-                  currently located in {dogInfo?.zip_code} */}
-                {/* </Card.Text> */}
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>
