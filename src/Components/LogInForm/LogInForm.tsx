@@ -81,7 +81,7 @@ const LogInForm: FC<LogInFormProps> = (props) => {
           />
         </Form.Group>
 
-        <Button className="m-2 game-button" type="submit">
+        <Button className="m-2 login-btn" type="submit">
           Login
         </Button>
         <p className="error-message">&nbsp;{error}</p>

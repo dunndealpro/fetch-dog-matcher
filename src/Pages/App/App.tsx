@@ -35,7 +35,7 @@ function App() {
           <NavBar setUser={setUser} />
           <div className="flex-grow-1 overflow-auto">
             <Routes>
-              <Route path="/" element={<SearchPage />} />
+              <Route path="/fetch-dog-matcher" element={<SearchPage />} />
             </Routes>
           </div>
           <Footer />
