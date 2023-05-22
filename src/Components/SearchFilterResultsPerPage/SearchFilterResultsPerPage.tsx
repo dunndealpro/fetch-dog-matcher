@@ -20,14 +20,14 @@ const SearchFilterResultsPerPage: FC<SearchFilterResultsPerPageProps> = ({result
 console.log(resultsPerPage)
   return (
     <>      
-    <Col className="mt-2" >
+    <Col xs={6} sm={6} md={3} lg={3}  xl={2} xxl={1} className="mt-2" >
       <Form.Label htmlFor="inputAgeMax"># of Results per Page</Form.Label>
       {/* <br />
       <Form.Text id="MaxAgeHelpBlock" muted>
         Enter a number
       </Form.Text> */}
     </Col>
-    <Col className="mt-2" >
+    <Col xs={6} sm={6} md={3} lg={3}  xl={1} xxl={1} className="mt-2" >
       <Form.Control
         type="number"
         id="inputResultsPerPage"

@@ -16,14 +16,14 @@ const SearchFilterAgeMax: FC<SearchFilterAgeMaxProps> = ({ageMax, setAgeMax}) =>
 
   return (
     <>    
-    <Col className="mt-2">
+    <Col xs={6} sm={6} md={2} lg={2}  xl={1} xxl={1} className="mt-2">
       <Form.Label htmlFor="inputAgeMax">Max Age</Form.Label>
       
       {/* <Form.Text id="MaxAgeHelpBlock" muted>
         Enter a num {">"}= 0
       </Form.Text> */}
     </Col>  
-    <Col className="mt-2">
+    <Col xs={6} sm={6} md={4} lg={4}  xl={1} xxl={1}className="mt-2">
       <Form.Control
       className="text-align-center"
         type="number"

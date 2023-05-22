@@ -86,7 +86,7 @@ const SearchFilter: FC<SearchFilterProps> = ({
 
   return (
     <>
-      <Col sm={2} className="mt-2">
+      <Col sm={12} md={12} lg={12}  xl={2} xxl={2} className="mt-2">
         <SelectBreedsFilter
           selectedBreeds={selectedBreeds}
           setSelectedBreeds={setSelectedBreeds}
@@ -107,8 +107,8 @@ const SearchFilter: FC<SearchFilterProps> = ({
       {/* <Col sm={2}  className="mt-2"> */}
         <SearchResultSort sort={sort} setSort={setSort} sortDir={sortDir} setSortDir={setSortDir} />
       {/* </Col> */}
-      <Col sm={1}  className="mt-2">
-        <Button className="w-100" variant="primary" onClick={handleSubmit}>
+      <Col sm={12} md={12} lg={4}  xl={3} xxl={1} className="mt-2 text-center ">
+        <Button className="w-100 " variant="primary" onClick={handleSubmit}>
          Filter
         </Button>
       </Col>

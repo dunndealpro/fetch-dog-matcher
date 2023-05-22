@@ -67,7 +67,7 @@ const SearchPage: FC = () => {
     <>
       <SearchPageWelcome />
       <Container>
-        <Row>
+        <Row className="bg-info rounded p-2 m-1 justify-content-center">
           <SearchFilter
             selectedBreeds={selectedBreeds}
             setSelectedBreeds={setSelectedBreeds}

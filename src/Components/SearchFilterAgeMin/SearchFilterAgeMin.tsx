@@ -17,13 +17,13 @@ const SearchFilterAgeMin: FC<SearchFilterAgeMinProps> = ({
 
   return (
     <>
-    <Col className="mt-2">
+    <Col  xs={6} sm={6} md={3} lg={3}  xl={1} xxl={1} className="mt-2">
       <Form.Label htmlFor="inputAgeMin">Min Age</Form.Label>
       {/* <Form.Text id="minAgeHelpBlock" muted >
         Enter a num {">"}= 0
       </Form.Text> */}
     </Col>
-    <Col className="mt-2">
+    <Col  xs={6} sm={6} md={3} lg={3}  xl={1} xxl={1} className="mt-2">
       <Form.Control
         type="number"
         id="inputMinAge"

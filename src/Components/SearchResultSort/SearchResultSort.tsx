@@ -44,7 +44,10 @@ const SearchResultSort: FC<SearchResultSortProps> = ({
     <>
       {/* <Container fluid> */}
         {/* <Row> */}
-          <Col sm={1} className="mt-2 " >
+        <Col xs={6} sm={6} md={2} lg={2}  xl={1} xxl={1} className="mt-2">
+        Sort By:
+        </Col>
+          <Col xs={3} sm={3} md={2} lg={2}  xl={1} xxl={1} className="mt-2" >
             <Dropdown className="">
               <Dropdown.Toggle variant="success" id="dropdown-basic">
                 {sort}
@@ -59,7 +62,7 @@ const SearchResultSort: FC<SearchResultSortProps> = ({
               </Dropdown.Menu>
             </Dropdown>
           </Col>
-          <Col sm={1} className="mt-2 " >
+          <Col xs={3} sm={3} md={2} lg={2}  xl={1} xxl={1} className="mt-2" >
             <Dropdown className="">
               <Dropdown.Toggle variant="success" id="dropdown-basic">
                {sortDir}

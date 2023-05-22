@@ -27,12 +27,12 @@ interface Dog {
 }
 
 interface Location {
-  zip_code: string
-  latitude: number
-  longitude: number
-  city: string
-  state: string
-  county: string
+  zip_code: string;
+  latitude: number;
+  longitude: number;
+  city: string;
+  state: string;
+  county: string;
 }
 
 interface SearchResult {
@@ -53,7 +53,7 @@ const SearchResultItem: FC<SearchResultItemProps> = (props) => {
   const [dogInfo, setDogInfo] = useState<Dog>();
   const [display, setDisplay] = useState("I am not sure...");
   const [isLiked, setIsLiked] = useState(false);
-  const [locationInfo, setLocationInfo] = useState<Array<any>>([])
+  const [locationInfo, setLocationInfo] = useState<Array<any>>([]);
 
   let dogSearchUrl = `https://frontend-take-home-service.fetch.com/dogs`;
   let locationUrl = `https://frontend-take-home-service.fetch.com/locations`;
@@ -86,25 +86,23 @@ const SearchResultItem: FC<SearchResultItemProps> = (props) => {
     }).then((res) => res.json());
     setDogInfo(dogResults[0]);
     checkForLikes(dogResults[0].id);
-    getLocation(dogResults[0].zip_code)
+    getLocation(dogResults[0].zip_code);
   }
 
-  async function getLocation(location: string | undefined){
-    console.log(location)
-    const locationParams = [location]
-    if(locationParams !== undefined && locationParams){
-    let locationResults = await fetch(locationUrl, {
-      method: "POST",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(locationParams),
-      
-  }).then((res) => res.json());
-  console.log(locationResults)
-  setLocationInfo(locationResults)}
-}
+  async function getLocation(location: string | undefined) {
+    const locationParams = [location];
+    if (locationParams !== undefined && locationParams) {
+      let locationResults = await fetch(locationUrl, {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(locationParams),
+      }).then((res) => res.json());
+      setLocationInfo(locationResults);
+    }
+  }
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     let temp = props.likedDogs?.likedDogs;
@@ -134,42 +132,53 @@ const SearchResultItem: FC<SearchResultItemProps> = (props) => {
 
   useEffect(() => {
     getDog();
-  }, [props.searchResult, props.likedDogs, isLiked,]);
+  }, [props.searchResult, props.likedDogs, isLiked]);
 
-  console.log(props.likedDogs);
 
   return (
     <>
       <Card className="">
-        <Card.Text className="p-2 rounded-top bg-secondary">{dogInfo?.breed}</Card.Text>
+        <Card.Text className="p-2 rounded-top bg-secondary">
+          {dogInfo?.breed}
+        </Card.Text>
         <Card.Img variant="bot" src={dogInfo?.img} />
         <Card.Body>
           <Accordion>
             <Accordion.Item eventKey="0">
               <Accordion.Header>Meet {dogInfo?.name}</Accordion.Header>
-              <Accordion.Body>
-                <Card.Text>
-                  <div>Age: <strong>{dogInfo?.age}</strong></div>
+              <Accordion.Body className="align-left">
+                {/* <Card.Text className="align-left"> */}
+                  <div>
+                    Breed: <strong>{dogInfo?.breed}</strong>
+                  </div>
+                  <div>
+                    Age: <strong>{dogInfo?.age}</strong>
+                  </div>
                   <br />
-                  <div>City: <strong>{locationInfo[0]?.city}</strong></div>
-                  <div>County: <strong>{locationInfo[0]?.county}</strong></div>
-                  <div>State: <strong>{locationInfo[0]?.state}</strong></div>
+                  <div>
+                    City: <strong>{locationInfo[0]?.city}</strong>
+                  </div>
+                  <div>
+                    County: <strong>{locationInfo[0]?.county}</strong>
+                  </div>
+                  <div>
+                    State: <strong>{locationInfo[0]?.state}</strong>
+                  </div>
 
                   {/* Hi, I am a {dogInfo?.age} year old {dogInfo?.breed} and I am
                   currently located in {dogInfo?.zip_code} */}
-                </Card.Text>
+                {/* </Card.Text> */}
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>
-
-          <Form.Check
-            className="mt-3"
-            type="switch"
-            id={dogInfo?.id}
-            label={display}
-            checked={isLiked}
-            onChange={(e) => handleChange(e)}
-          />
+            <Form.Check
+              className="mt-3 text-center"
+              type="switch"
+              id={dogInfo?.id}
+              label={display}
+              checked={isLiked}
+              onChange={(e) => handleChange(e)}
+            />
         </Card.Body>
       </Card>
     </>
