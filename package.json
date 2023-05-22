@@ -52,6 +52,10 @@
     ]
   },
   "devDependencies": {
-    "@types/js-cookie": "^3.0.3"
+    "@types/js-cookie": "^3.0.3",
+    "css-loader": "^6.7.4",
+    "postcss-loader": "^7.3.0",
+    "source-map-loader": "^4.0.1",
+    "webpack": "^5.83.1"
   }
 }
