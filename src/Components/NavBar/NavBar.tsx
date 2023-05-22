@@ -1,5 +1,4 @@
 import { FC } from "react";
-import Container from "react-bootstrap/Container";
 import Cookies from "js-cookie";
 
 import Nav from "react-bootstrap/Nav";

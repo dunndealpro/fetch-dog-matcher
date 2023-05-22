@@ -1,6 +1,6 @@
 import { FC } from "react";
 import './SearchFilterAgeMax.css'
-import { Col, Form, Button } from "react-bootstrap";
+import { Col, Form,} from "react-bootstrap";
 
 interface SearchFilterAgeMaxProps{
     ageMax: number;

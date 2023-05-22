@@ -1,11 +1,7 @@
-import React, { FC, useEffect, useState } from "react";
-import Container from "react-bootstrap/Container";
+import React, { FC, useState } from "react";
 import { Col } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
-import Dropdown from "react-bootstrap/Dropdown";
-import Form from "react-bootstrap/Form";
 import "./SearchFilter.css";
-import { stringify } from "querystring";
 import SelectBreedsFilter from "../SelectBreedsFilter/SelectBreedsFilter";
 import SearchFilterAgeMin from "../SearchFilterAgeMin/SearchFilterAgeMin";
 import SearchFilterAgeMax from "../SearchFilterAgeMax/SearchFilterAgeMax";
@@ -13,9 +9,7 @@ import SearchFilterResultsPerPage from "../SearchFilterResultsPerPage/SearchFilt
 import Modal from "react-bootstrap/Modal";
 import SearchResultSort from "../SearchResultSort/SearchResultSort";
 
-// interface ResultsPerPage{
-//   resultsPerPage: number;  
-// }
+
 
 interface SearchResult {
   resultIds: Array<any>;

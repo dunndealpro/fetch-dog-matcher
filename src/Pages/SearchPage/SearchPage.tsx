@@ -34,7 +34,7 @@ const SearchPage: FC = () => {
   const [searchResults, setSearchResults] = useState<SearchResult>();
   const [likedDogs, setLikedDogs] = useState<LikedDogs | undefined>();
   const [showFindMatchButton, setShowFindMatchButton] = useState(false)
-  const [resultsPerPage, setResultsPerPage] = useState<number>(25);
+  const [resultsPerPage, setResultsPerPage] = useState<number>(10);
   
 //   const [resultsPerPage, setResultsPerPage] = useState<ResultsPerPage>({
 //     resultsPerPage: 25,

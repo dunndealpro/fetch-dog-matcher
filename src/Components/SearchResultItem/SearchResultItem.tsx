@@ -1,13 +1,9 @@
 import { FC, useState, useEffect, ChangeEvent } from "react";
-import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import Image from "react-bootstrap";
 import { Accordion } from "react-bootstrap";
-import { Container, Col, Row } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 
 import "./SearchResultItem.css";
-import { idText } from "typescript";
 
 interface LikedDogs {
   likedDogs: string[] | undefined;
@@ -24,15 +20,6 @@ interface Dog {
   age: number;
   zip_code: string;
   breed: string;
-}
-
-interface Location {
-  zip_code: string;
-  latitude: number;
-  longitude: number;
-  city: string;
-  state: string;
-  county: string;
 }
 
 interface SearchResult {
