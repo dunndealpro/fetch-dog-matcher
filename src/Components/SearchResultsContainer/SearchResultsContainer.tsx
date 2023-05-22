@@ -12,6 +12,10 @@ interface SearchResult {
   prev: string | undefined;
 }
 
+// interface Display{
+//   display: string;
+// }
+
 // interface ResultsPerPage{
 //   resultsPerPage: number
 // }
@@ -25,6 +29,10 @@ interface LikedDogs {
 }
 
 interface SearchResultsContainerProps {
+  matchButtonActive: boolean
+  setMatchButtonActive: React.Dispatch<React.SetStateAction<boolean>>;
+  // display: string
+  // setDisplay: React.Dispatch<React.SetStateAction<string>>;
   searchResults: SearchResult | undefined;
   setSearchResults: React.Dispatch<
     React.SetStateAction<SearchResult | undefined>
@@ -40,7 +48,11 @@ const SearchResultsContainer: FC<SearchResultsContainerProps> = ({
   setSearchResults,
   likedDogs,
   setLikedDogs,
-    resultsPerPage
+    resultsPerPage,
+    matchButtonActive,
+    setMatchButtonActive
+    // display,
+    // setDisplay
 }) => {
   console.log(searchResults?.resultIds);
 
@@ -66,13 +78,18 @@ const SearchResultsContainer: FC<SearchResultsContainerProps> = ({
         </Row>
         <Row className="mb-2">
           {searchResults?.resultIds.map((result, k) => (
-            <Col key={result} className="mb-2" xl={2}lg={3} md={4} sm={6} xs={12}>
+            <Col key={result} className="mb-2" xl={3}lg={3} md={4} sm={6} xs={12}>
               <SearchResultItem
                 key={result}
                 dog={result}
                 searchResult={searchResults}
                 likedDogs={likedDogs}
                 setLikedDogs={setLikedDogs}
+                // display={display}
+                // setDisplay={setDisplay}
+                matchButtonActive={matchButtonActive}
+                setMatchButtonActive={setMatchButtonActive}
+
               />
             </Col>
           ))}

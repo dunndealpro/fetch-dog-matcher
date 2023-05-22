@@ -26,7 +26,22 @@ interface ShowFindMatchButtonFloat {
   showFindMatchButtonFloat: boolean;
 }
 
+interface SearchResult {
+  resultIds: Array<any>;
+  total: number;
+  next: string | undefined;
+  prev: string | undefined;
+}
+
 interface FindMatchButtonFloatProps {
+  matchButtonActive: boolean
+  setMatchButtonActive: React.Dispatch<React.SetStateAction<boolean>>;
+  searchResults: SearchResult | undefined;
+  setSearchResults: React.Dispatch<
+    React.SetStateAction<SearchResult | undefined>
+  >;
+  // display: string
+  // setDisplay: React.Dispatch<React.SetStateAction<string>>;
   likedDogs: LikedDogs | undefined;
   setLikedDogs: React.Dispatch<React.SetStateAction<LikedDogs | undefined>>;
   className?: string; // Add the className prop
@@ -38,6 +53,11 @@ const FindMatchButtonFloat: FC<FindMatchButtonFloatProps> = ({
   setLikedDogs,
   className,
   showFindMatchButtonFloat,
+  searchResults,
+  setSearchResults,
+  matchButtonActive,
+  setMatchButtonActive
+  // setDisplay
 }) => {
   const [match, setMatch] = useState<Match>();
   const [matchModal, setMatchModal] = useState(false);
@@ -67,11 +87,17 @@ const FindMatchButtonFloat: FC<FindMatchButtonFloatProps> = ({
   function handleClose() {
     setMatchModal(false);
     setLikedDogs(undefined);
+    setSearchResults(searchResults)
+    setMatchButtonActive(false)
+    // setDisplay("I am not sure...")
   }
-  let buttonActive = false;
-  if (likedDogs?.likedDogs) {
+  // let buttonActive = false;
+  
+  if (likedDogs?.likedDogs && likedDogs.likedDogs.length > 0 ) {
     console.log(likedDogs);
-    buttonActive = true;
+    setMatchButtonActive(true)
+  }else{
+    setMatchButtonActive(false)
   }
 
   useEffect(() => {
@@ -85,14 +111,14 @@ const FindMatchButtonFloat: FC<FindMatchButtonFloatProps> = ({
   return (
     <>
       <Container className={`find-match-button-float fixed-bottom ${
-                !buttonActive ? "invisible" : ""
+                !matchButtonActive ? "invisible" : ""
               }`}>
         <Row>
           <Col md={12} fluid>
             <Button
               className="find-match-button-float-col"
               onClick={findMatch}
-              disabled={!buttonActive}
+              disabled={!matchButtonActive}
             >
               Get matched with a new Friend!
             </Button>

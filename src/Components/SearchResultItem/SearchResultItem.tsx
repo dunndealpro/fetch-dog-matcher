@@ -13,6 +13,10 @@ interface LikedDogs {
 //   likedDog: string
 // }
 
+// interface Display{
+//   display: string;
+// }
+
 interface Dog {
   id: string;
   img: string;
@@ -30,6 +34,10 @@ interface SearchResult {
 }
 
 interface SearchResultItemProps {
+  matchButtonActive: boolean
+  setMatchButtonActive: React.Dispatch<React.SetStateAction<boolean>>;
+  // display: string
+  // setDisplay: React.Dispatch<React.SetStateAction<string>>;
   dog: string;
   searchResult: SearchResult;
   likedDogs?: LikedDogs;
@@ -113,6 +121,10 @@ const SearchResultItem: FC<SearchResultItemProps> = (props) => {
       } else {
         temp?.splice(idx, 1);
         props.setLikedDogs({ likedDogs: temp });
+        if(idx === 0){
+          console.log("WHY ARE YOU DOING THIS")
+          props.setMatchButtonActive(false)
+        }
       }
     }
   };

@@ -14,13 +14,17 @@ import FindMatchButtonFloat from "../../Components/FindMatchButtonFloat/FindMatc
 //     likedDog: string
 // }
 
-interface showFindMatchButton{
-    showFindMatchButton: boolean
+// interface Display{
+//   display: string;
+// }
+
+interface showFindMatchButton {
+  showFindMatchButton: boolean;
 }
 
-interface LikedDogs{
-    likedDogs: string[] | undefined
-  }
+interface LikedDogs {
+  likedDogs: string[] | undefined;
+}
 
 interface SearchResult {
   resultIds: Array<any>;
@@ -33,21 +37,21 @@ const SearchPage: FC = () => {
   const [selectedBreeds, setSelectedBreeds] = useState<string[]>([]);
   const [searchResults, setSearchResults] = useState<SearchResult>();
   const [likedDogs, setLikedDogs] = useState<LikedDogs | undefined>();
-  const [showFindMatchButton, setShowFindMatchButton] = useState(false)
+  const [showFindMatchButton, setShowFindMatchButton] = useState(false);
   const [resultsPerPage, setResultsPerPage] = useState<number>(10);
-  
-//   const [resultsPerPage, setResultsPerPage] = useState<ResultsPerPage>({
-//     resultsPerPage: 25,
-//   });
+  const [matchButtonActive, setMatchButtonActive] = useState(false)
+  // const [display, setDisplay] = useState<string>("I am not sure...");
+
+  //   const [resultsPerPage, setResultsPerPage] = useState<ResultsPerPage>({
+  //     resultsPerPage: 25,
+  //   });
   console.log(searchResults);
-
-
 
   useEffect(() => {
     console.log("search page use effect", searchResults);
   }, [searchResults, likedDogs]);
 
-//  
+  //
 
   return (
     <>
@@ -62,23 +66,36 @@ const SearchPage: FC = () => {
             resultsPerPage={resultsPerPage}
             setResultsPerPage={setResultsPerPage}
           />
-           
-          
         </Row>
-            {/* <FindMatchButton  likedDogs={likedDogs} setLikedDogs={setLikedDogs} showFindMatchButton={showFindMatchButton}/> */}
+        {/* <FindMatchButton  likedDogs={likedDogs} setLikedDogs={setLikedDogs} showFindMatchButton={showFindMatchButton}/> */}
       </Container>
-      {searchResults?
-      <SearchResultsContainer
-        searchResults={searchResults}
-        setSearchResults={setSearchResults}
+      {searchResults ? (
+        <SearchResultsContainer
+          searchResults={searchResults}
+          setSearchResults={setSearchResults}
+          likedDogs={likedDogs}
+          setLikedDogs={setLikedDogs}
+          resultsPerPage={resultsPerPage}
+          matchButtonActive={matchButtonActive}
+          setMatchButtonActive={setMatchButtonActive}
+          // setResultsPerPage={setResultsPerPage}
+          // display={display}
+          // setDisplay={setDisplay}
+        />
+      ) : (
+        ""
+      )}
+      <FindMatchButtonFloat
+        // display={display}
+        // setDisplay={setDisplay}
         likedDogs={likedDogs}
         setLikedDogs={setLikedDogs}
-        resultsPerPage={resultsPerPage}
-        // setResultsPerPage={setResultsPerPage}
-      />:""
-      
-    }
-      <FindMatchButtonFloat  likedDogs={likedDogs} setLikedDogs={setLikedDogs} showFindMatchButtonFloat={showFindMatchButton}/>
+        showFindMatchButtonFloat={showFindMatchButton}
+        searchResults={searchResults}
+          setSearchResults={setSearchResults}
+          matchButtonActive={matchButtonActive}
+          setMatchButtonActive={setMatchButtonActive}
+      />
       {/* <SearchResultsContainer searchResults={searchResults} setSearchResults={setSearchResults}/> */}
     </>
   );
