@@ -12,7 +12,7 @@ interface NavBarProps {
 
 const NavBar: FC<NavBarProps> = ({ setUser }) => {
   async function handleLogOut() {
-    let response = await fetch(process.env.REACT_APP_API_URL + `/auth/logout`, {
+    await fetch(process.env.REACT_APP_API_URL + `/auth/logout`, {
       method: "POST",
       credentials: "include",
     });
@@ -21,6 +21,7 @@ const NavBar: FC<NavBarProps> = ({ setUser }) => {
   }
 
   let title = "Welcome " + Cookies.get("hasCookies") + "!";
+
 
   return (
     <>
