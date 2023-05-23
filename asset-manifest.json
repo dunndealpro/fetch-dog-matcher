@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/fetch-dog-matcher/static/css/main.43d34dcd.css",
-    "main.js": "/fetch-dog-matcher/static/js/main.d0724dd1.js",
+    "main.js": "/fetch-dog-matcher/static/js/main.d6b34bf7.js",
     "static/js/988.3cee8c54.chunk.js": "/fetch-dog-matcher/static/js/988.3cee8c54.chunk.js",
-    "static/media/yogi-circle.png": "/fetch-dog-matcher/static/media/yogi-circle.2c7a1b2435933f526efa.png",
+    "static/media/yogi-circle.png": "/fetch-dog-matcher/static/media/yogi-circle.117b0aacb12cbb7cf082.png",
     "index.html": "/fetch-dog-matcher/index.html",
     "main.43d34dcd.css.map": "/fetch-dog-matcher/static/css/main.43d34dcd.css.map",
-    "main.d0724dd1.js.map": "/fetch-dog-matcher/static/js/main.d0724dd1.js.map",
+    "main.d6b34bf7.js.map": "/fetch-dog-matcher/static/js/main.d6b34bf7.js.map",
     "988.3cee8c54.chunk.js.map": "/fetch-dog-matcher/static/js/988.3cee8c54.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.43d34dcd.css",
-    "static/js/main.d0724dd1.js"
+    "static/js/main.d6b34bf7.js"
   ]
 }
