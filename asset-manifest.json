@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/fetch-dog-matcher/static/css/main.dfa317e7.css",
-    "main.js": "/fetch-dog-matcher/static/js/main.f391972e.js",
+    "main.css": "/fetch-dog-matcher/static/css/main.43d34dcd.css",
+    "main.js": "/fetch-dog-matcher/static/js/main.d0724dd1.js",
     "static/js/988.3cee8c54.chunk.js": "/fetch-dog-matcher/static/js/988.3cee8c54.chunk.js",
     "static/media/yogi-circle.png": "/fetch-dog-matcher/static/media/yogi-circle.2c7a1b2435933f526efa.png",
     "index.html": "/fetch-dog-matcher/index.html",
-    "main.dfa317e7.css.map": "/fetch-dog-matcher/static/css/main.dfa317e7.css.map",
-    "main.f391972e.js.map": "/fetch-dog-matcher/static/js/main.f391972e.js.map",
+    "main.43d34dcd.css.map": "/fetch-dog-matcher/static/css/main.43d34dcd.css.map",
+    "main.d0724dd1.js.map": "/fetch-dog-matcher/static/js/main.d0724dd1.js.map",
     "988.3cee8c54.chunk.js.map": "/fetch-dog-matcher/static/js/988.3cee8c54.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.dfa317e7.css",
-    "static/js/main.f391972e.js"
+    "static/css/main.43d34dcd.css",
+    "static/js/main.d0724dd1.js"
   ]
 }
