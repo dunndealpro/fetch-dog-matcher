@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { Routes, Route, redirect } from "react-router-dom";
 import Cookies from "js-cookie";
 
@@ -18,9 +18,7 @@ function App() {
  
   function checkForCookies() {
     const cookieVal = Cookies.get("hasCookies");
-    console.log(cookieVal);
     if (cookieVal) {
-      console.log(cookieVal);
       return true;
     } else {
       return false;

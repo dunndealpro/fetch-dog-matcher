@@ -1,25 +1,10 @@
 import { FC, useState, useEffect, SetStateAction } from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import SearchFilter from "../../Components/SearchFilter/SearchFilter";
-import SearchResultsContainer from "../../Components/SearchResultsContainer/SearchResultsContainer";
-import SearchPageWelcome from "../../Components/SearchPageWelcome/SearchPageWelcome";
-import FindMatchButton from "../../Components/FindMatchButton/FindMatchButton";
+import { Container, Row } from "react-bootstrap";
+
 import FindMatchButtonFloat from "../../Components/FindMatchButtonFloat/FindMatchButtonFloat";
-import{ Image} from "react-bootstrap";
-
-
-
-// interface ResultsPerPage {
-//   resultsPerPage: number ;
-// }
-
-// interface LikedDog{
-//     likedDog: string
-// }
-
-// interface Display{
-//   display: string;
-// }
+import SearchFilter from "../../Components/SearchFilter/SearchFilter";
+import SearchPageWelcome from "../../Components/SearchPageWelcome/SearchPageWelcome";
+import SearchResultsContainer from "../../Components/SearchResultsContainer/SearchResultsContainer";
 
 interface showFindMatchButton {
   showFindMatchButton: boolean;
@@ -42,24 +27,16 @@ const SearchPage: FC = () => {
   const [likedDogs, setLikedDogs] = useState<LikedDogs | undefined>();
   const [showFindMatchButton, setShowFindMatchButton] = useState(false);
   const [resultsPerPage, setResultsPerPage] = useState<number>(10);
-  const [matchButtonActive, setMatchButtonActive] = useState(false)
-  // const [display, setDisplay] = useState<string>("I am not sure...");
+  const [matchButtonActive, setMatchButtonActive] = useState(false);
 
-  //   const [resultsPerPage, setResultsPerPage] = useState<ResultsPerPage>({
-  //     resultsPerPage: 25,
-  //   });
-  console.log(searchResults);
 
   useEffect(() => {
-    console.log("search page use effect", searchResults);
+    // console.log("search page use effect", searchResults);
   }, [searchResults, likedDogs]);
-
-  //
 
   return (
     <>
       <SearchPageWelcome />
- 
 
       <Container>
         <Row className="bg-light rounded p-2 m-1 justify-content-center">
@@ -72,7 +49,6 @@ const SearchPage: FC = () => {
             setResultsPerPage={setResultsPerPage}
           />
         </Row>
-        {/* <FindMatchButton  likedDogs={likedDogs} setLikedDogs={setLikedDogs} showFindMatchButton={showFindMatchButton}/> */}
       </Container>
       {searchResults ? (
         <SearchResultsContainer
@@ -83,25 +59,19 @@ const SearchPage: FC = () => {
           resultsPerPage={resultsPerPage}
           matchButtonActive={matchButtonActive}
           setMatchButtonActive={setMatchButtonActive}
-          // setResultsPerPage={setResultsPerPage}
-          // display={display}
-          // setDisplay={setDisplay}
         />
       ) : (
         ""
       )}
       <FindMatchButtonFloat
-        // display={display}
-        // setDisplay={setDisplay}
         likedDogs={likedDogs}
         setLikedDogs={setLikedDogs}
         showFindMatchButtonFloat={showFindMatchButton}
         searchResults={searchResults}
-          setSearchResults={setSearchResults}
-          matchButtonActive={matchButtonActive}
-          setMatchButtonActive={setMatchButtonActive}
+        setSearchResults={setSearchResults}
+        matchButtonActive={matchButtonActive}
+        setMatchButtonActive={setMatchButtonActive}
       />
-      {/* <SearchResultsContainer searchResults={searchResults} setSearchResults={setSearchResults}/> */}
     </>
   );
 };

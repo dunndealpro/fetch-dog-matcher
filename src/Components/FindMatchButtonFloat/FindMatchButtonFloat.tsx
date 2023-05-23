@@ -1,9 +1,9 @@
-import { FC, useEffect, useState } from "react";
-import "./FindMatchButtonFloat.css";
+import { FC, useState } from "react";
 import { Button, Container, Row, Col, Modal } from "react-bootstrap";
 
 import MatchModal from "../MatchModal/MatchModal";
-import { propTypes } from "react-bootstrap/esm/Image";
+
+import "./FindMatchButtonFloat.css";
 
 interface LikedDogs {
   likedDogs: string[] | undefined;
@@ -34,42 +34,34 @@ interface SearchResult {
 }
 
 interface FindMatchButtonFloatProps {
-  matchButtonActive: boolean
+  matchButtonActive: boolean;
   setMatchButtonActive: React.Dispatch<React.SetStateAction<boolean>>;
   searchResults: SearchResult | undefined;
   setSearchResults: React.Dispatch<
     React.SetStateAction<SearchResult | undefined>
   >;
-  // display: string
-  // setDisplay: React.Dispatch<React.SetStateAction<string>>;
+
   likedDogs: LikedDogs | undefined;
   setLikedDogs: React.Dispatch<React.SetStateAction<LikedDogs | undefined>>;
-  className?: string; // Add the className prop
+  className?: string;
   showFindMatchButtonFloat: boolean;
 }
 
 const FindMatchButtonFloat: FC<FindMatchButtonFloatProps> = ({
   likedDogs,
   setLikedDogs,
-  className,
-  showFindMatchButtonFloat,
   searchResults,
   setSearchResults,
   matchButtonActive,
-  setMatchButtonActive
-  // setDisplay
+  setMatchButtonActive,
 }) => {
   const [match, setMatch] = useState<Match>();
   const [matchModal, setMatchModal] = useState(false);
-  const matchUrl = process.env.REACT_APP_API_URL+`/dogs/match`;
-  //   const matchInfoUrl = `https://frontend-take-home-service.fetch.com/dogs`;
-  //   const [matchInfo, setMatchInfo] = useState<Dog>()
 
-  // console.log(liks)
+  const matchUrl = process.env.REACT_APP_API_URL + `/dogs/match`;
 
   async function findMatch() {
     const reqBodyParams = likedDogs?.likedDogs;
-    console.log(likedDogs);
     const matchedDog = await fetch(matchUrl, {
       method: "POST",
       credentials: "include",
@@ -78,43 +70,34 @@ const FindMatchButtonFloat: FC<FindMatchButtonFloatProps> = ({
       },
       body: JSON.stringify(reqBodyParams),
     }).then((res) => res.json());
-    console.log(matchedDog);
     setMatch(matchedDog);
     setMatchModal(true);
-    // getMatchInfo()
   }
 
   function handleClose() {
     setMatchModal(false);
     setLikedDogs(undefined);
-    setSearchResults(searchResults)
-    setMatchButtonActive(false)
-    // setDisplay("I am not sure...")
-  }
-  // let buttonActive = false;
-  
-  if (likedDogs?.likedDogs && likedDogs.likedDogs.length > 0 ) {
-    console.log(likedDogs);
-    setMatchButtonActive(true)
-  }else{
-    setMatchButtonActive(false)
+    setSearchResults(searchResults);
+    setMatchButtonActive(false);
   }
 
-  useEffect(() => {
-    console.log(likedDogs);
-    //   if(likedDogs?.likedDogs){
-    //     console.log(likedDogs)
-    //     buttonActive = true
-    // }
-  }, [likedDogs]);
+  if (likedDogs?.likedDogs && likedDogs.likedDogs.length > 0) {
+    setMatchButtonActive(true);
+  } else {
+    setMatchButtonActive(false);
+  }
+
+  
 
   return (
     <>
-      <Container className={`find-match-button-float fixed-bottom ${
-                !matchButtonActive ? "invisible" : ""
-              }`}>
+      <Container
+        className={`find-match-button-float fixed-bottom ${
+          !matchButtonActive ? "invisible" : ""
+        }`}
+      >
         <Row>
-          <Col md={12} fluid>
+          <Col md={12} >
             <Button
               className="find-match-button-float-col"
               onClick={findMatch}

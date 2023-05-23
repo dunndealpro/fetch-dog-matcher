@@ -1,15 +1,13 @@
 import React, { FC, useState } from "react";
-import { Col } from "react-bootstrap";
-import Button from "react-bootstrap/Button";
-import "./SearchFilter.css";
+import { Button, Col, Modal } from "react-bootstrap";
+
 import SelectBreedsFilter from "../SelectBreedsFilter/SelectBreedsFilter";
 import SearchFilterAgeMin from "../SearchFilterAgeMin/SearchFilterAgeMin";
 import SearchFilterAgeMax from "../SearchFilterAgeMax/SearchFilterAgeMax";
 import SearchFilterResultsPerPage from "../SearchFilterResultsPerPage/SearchFilterResultsPerPage";
-import Modal from "react-bootstrap/Modal";
 import SearchResultSort from "../SearchResultSort/SearchResultSort";
 
-
+import "./SearchFilter.css";
 
 interface SearchResult {
   resultIds: Array<any>;
@@ -19,9 +17,9 @@ interface SearchResult {
 }
 
 interface SearchFilterProps {
-  resultsPerPage: number
+  resultsPerPage: number;
   setResultsPerPage: React.Dispatch<React.SetStateAction<number>>;
-  
+
   selectedBreeds: string[];
   setSelectedBreeds: React.Dispatch<React.SetStateAction<string[]>>;
   searchResults: SearchResult | undefined;
@@ -35,18 +33,17 @@ const SearchFilter: FC<SearchFilterProps> = ({
   setSelectedBreeds,
   setSearchResults,
   resultsPerPage,
-  setResultsPerPage
+  setResultsPerPage,
 }) => {
   const [ageMin, setAgeMin] = useState<number>(5);
   const [ageMax, setAgeMax] = useState<number>(15);
   const [show, setShow] = useState(false);
-  // const [resultsPerPage, setResultsPerPage] = useState<number>(25);
   const [sort, setSort] = useState<string>("breed");
   const [sortDir, setSortDir] = useState<string>("asc");
 
   const handleClose = () => setShow(false);
 
-  let searchUrl = process.env.REACT_APP_API_URL+`/dogs/search?`;
+  let searchUrl = process.env.REACT_APP_API_URL + `/dogs/search?`;
 
   async function handleSubmit() {
     if (ageMin > ageMax) {
@@ -70,41 +67,35 @@ const SearchFilter: FC<SearchFilterProps> = ({
       resultsPerPageString +
       sortString;
 
-    console.log("submit", searchUrl);
     let results: SearchResult | undefined = await fetch(searchUrl, {
       credentials: "include",
     }).then((res) => res.json());
-    console.log(results);
     setSearchResults(results);
   }
-  console.log('SEARCH FILTER');
 
   return (
     <>
-      <Col sm={12} md={12} lg={12}  xl={2} xxl={2} className="mt-2">
+      <Col sm={12} md={12} lg={12} xl={2} xxl={2} className="mt-2">
         <SelectBreedsFilter
           selectedBreeds={selectedBreeds}
           setSelectedBreeds={setSelectedBreeds}
         />
       </Col>
-      {/* <Col sm={2}  className="mt-2"> */}
-        <SearchFilterAgeMin ageMin={ageMin} setAgeMin={setAgeMin} />
-      {/* </Col> */}
-      {/* <Col sm={2}  className="mt-2"> */}
-        <SearchFilterAgeMax ageMax={ageMax} setAgeMax={setAgeMax} />
-      {/* </Col> */}
-      {/* <Col sm={2}  className="mt-2"> */}
-        <SearchFilterResultsPerPage
-          resultsPerPage={resultsPerPage}
-          setResultsPerPage={setResultsPerPage}
-        />
-      {/* </Col> */}
-      {/* <Col sm={2}  className="mt-2"> */}
-        <SearchResultSort sort={sort} setSort={setSort} sortDir={sortDir} setSortDir={setSortDir} />
-      {/* </Col> */}
-      <Col sm={12} md={12} lg={4}  xl={3} xxl={1} className="mt-2 text-center ">
+      <SearchFilterAgeMin ageMin={ageMin} setAgeMin={setAgeMin} />
+      <SearchFilterAgeMax ageMax={ageMax} setAgeMax={setAgeMax} />
+      <SearchFilterResultsPerPage
+        resultsPerPage={resultsPerPage}
+        setResultsPerPage={setResultsPerPage}
+      />
+      <SearchResultSort
+        sort={sort}
+        setSort={setSort}
+        sortDir={sortDir}
+        setSortDir={setSortDir}
+      />
+      <Col sm={12} md={12} lg={4} xl={3} xxl={1} className="mt-2 text-center ">
         <Button className="btn-filter w-100 " variant="" onClick={handleSubmit}>
-         Search for Dogs
+          Search for Dogs
         </Button>
       </Col>
       <Modal show={show} onHide={handleClose}>

@@ -1,6 +1,7 @@
 import { FC, useState, useEffect } from "react";
+import {  Image, Modal } from "react-bootstrap";
+
 import "./MatchModal.css";
-import { Button, Image, Modal } from "react-bootstrap";
 
 interface Match {
   match: string;

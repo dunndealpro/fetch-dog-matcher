@@ -1,15 +1,6 @@
 import { FC } from "react";
-import Dropdown from "react-bootstrap/Dropdown";
-import { Container, Row, Col } from "react-bootstrap";
+import { Col, Dropdown } from "react-bootstrap";
 import "./SearchResultSort.css";
-
-// interface Sort{
-//     sort: string;
-//   }
-
-//   interface SortDir{
-//     sortDir: string
-//   }
 
 interface SearchResultSortProps {
   sort: string;
@@ -42,45 +33,36 @@ const SearchResultSort: FC<SearchResultSortProps> = ({
   }
   return (
     <>
-      {/* <Container fluid> */}
-        {/* <Row> */}
-        <Col xs={6} sm={6} md={2} lg={2}  xl={1} xxl={1} className="mt-2">
+      <Col xs={6} sm={6} md={2} lg={2} xl={1} xxl={1} className="mt-2">
         Sort By:
-        </Col>
-          <Col xs={3} sm={3} md={2} lg={2}  xl={1} xxl={1} className="mt-2" >
-            <Dropdown className="sort-drop rounded ">
-              <Dropdown.Toggle className="sort-drop rounded" variant="" id="">
-                {sort}
-              </Dropdown.Toggle>
+      </Col>
+      <Col xs={3} sm={3} md={2} lg={2} xl={1} xxl={1} className="mt-2">
+        <Dropdown className="sort-drop rounded ">
+          <Dropdown.Toggle className="sort-drop rounded" variant="" id="">
+            {sort}
+          </Dropdown.Toggle>
 
-              <Dropdown.Menu >
-                <Dropdown.Item onClick={handleOnClickAge}>Age</Dropdown.Item>
-                <Dropdown.Item onClick={handleOnClickBreed}>
-                  Breed
-                </Dropdown.Item>
-                <Dropdown.Item onClick={handleOnClickName}>Name</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          </Col>
-          <Col xs={3} sm={3} md={2} lg={2}  xl={1} xxl={1} className="mt-2 " >
-            <Dropdown className="sort-drop rounded ">
-              <Dropdown.Toggle className="sort-drop rounded" variant="" id="">
-               {sortDir}
-              </Dropdown.Toggle>
+          <Dropdown.Menu>
+            <Dropdown.Item onClick={handleOnClickAge}>Age</Dropdown.Item>
+            <Dropdown.Item onClick={handleOnClickBreed}>Breed</Dropdown.Item>
+            <Dropdown.Item onClick={handleOnClickName}>Name</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+      </Col>
+      <Col xs={3} sm={3} md={2} lg={2} xl={1} xxl={1} className="mt-2 ">
+        <Dropdown className="sort-drop rounded ">
+          <Dropdown.Toggle className="sort-drop rounded" variant="" id="">
+            {sortDir}
+          </Dropdown.Toggle>
 
-              <Dropdown.Menu>
-                <Dropdown.Item onClick={handleOnClickAsc}>
-                  Asending
-                </Dropdown.Item>
-                <Dropdown.Item onClick={handleOnClickDesc}>
-                  Decscending
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          </Col>
-        {/* </Row> */}
-        {/* Sorting Options */}
-      {/* </Container> */}
+          <Dropdown.Menu>
+            <Dropdown.Item onClick={handleOnClickAsc}>Asending</Dropdown.Item>
+            <Dropdown.Item onClick={handleOnClickDesc}>
+              Decscending
+            </Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+      </Col>
     </>
   );
 };

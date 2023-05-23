@@ -1,11 +1,7 @@
-import { FC, useState, useEffect } from "react";
-import Pagination from "react-bootstrap/Pagination";
-import "./ResultsPagination.css";
-import { Container, Row, Col } from "react-bootstrap";
+import { FC, useEffect, useState } from "react";
+import { Col, Container, Pagination, Row } from "react-bootstrap";
 
-// interface ResultsPerPage{
-//   resultsPerPage: number
-// }
+import "./ResultsPagination.css";
 
 interface SearchResult {
   resultIds: Array<any>;
@@ -40,11 +36,9 @@ const ResultsPagination: FC<ResultsPaginationProps> = ({
 
   async function handleNextClick() {
     if (urlNext) {
-      console.log(urlNext);
       let results: SearchResult = await fetch(urlNext, {
         credentials: "include",
       }).then((res) => res.json());
-      console.log(results);
       setSearchResults(results);
       setCurrentPage(currentPage + 1);
     }
@@ -56,21 +50,20 @@ const ResultsPagination: FC<ResultsPaginationProps> = ({
       let results: SearchResult = await fetch(urlPrev, {
         credentials: "include",
       }).then((res) => res.json());
-      console.log(results);
       setSearchResults(results);
       setCurrentPage(currentPage - 1);
     }
   }
 
-  useEffect(()=>{
-    
-  },[])
+  useEffect(() => {}, []);
   return (
     <>
       <Container>
         <Row>
           <Col>
-            <div className="rounded p-2 ">Total Results: {searchResult?.total}</div>
+            <div className="rounded p-2 ">
+              Total Results: {searchResult?.total}
+            </div>
           </Col>
           <Col>
             <Pagination className="d-flex justify-content-center">

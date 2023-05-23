@@ -1,21 +1,11 @@
 import { FC, useState, useEffect, ChangeEvent } from "react";
-import Card from "react-bootstrap/Card";
-import { Accordion } from "react-bootstrap";
-import Form from "react-bootstrap/Form";
+import { Accordion, Card, Form } from "react-bootstrap";
 
 import "./SearchResultItem.css";
 
 interface LikedDogs {
   likedDogs: string[] | undefined;
 }
-
-// interface LikedDog{
-//   likedDog: string
-// }
-
-// interface Display{
-//   display: string;
-// }
 
 interface Dog {
   id: string;
@@ -34,10 +24,8 @@ interface SearchResult {
 }
 
 interface SearchResultItemProps {
-  matchButtonActive: boolean
+  matchButtonActive: boolean;
   setMatchButtonActive: React.Dispatch<React.SetStateAction<boolean>>;
-  // display: string
-  // setDisplay: React.Dispatch<React.SetStateAction<string>>;
   dog: string;
   searchResult: SearchResult;
   likedDogs?: LikedDogs;
@@ -50,11 +38,10 @@ const SearchResultItem: FC<SearchResultItemProps> = (props) => {
   const [isLiked, setIsLiked] = useState(false);
   const [locationInfo, setLocationInfo] = useState<Array<any>>([]);
 
-  let dogSearchUrl = process.env.REACT_APP_API_URL+`/dogs`;
-  let locationUrl = process.env.REACT_APP_API_URL+`/locations`;
+  let dogSearchUrl = process.env.REACT_APP_API_URL + `/dogs`;
+  let locationUrl = process.env.REACT_APP_API_URL + `/locations`;
 
   const reqBodyParams = [props.dog];
-  // const locationParams = [dogInfo?.zip_code]
 
   function checkForLikes(dogId: string | undefined) {
     if (props.likedDogs === undefined) {
@@ -121,9 +108,8 @@ const SearchResultItem: FC<SearchResultItemProps> = (props) => {
       } else {
         temp?.splice(idx, 1);
         props.setLikedDogs({ likedDogs: temp });
-        if(idx === 0){
-          console.log("WHY ARE YOU DOING THIS")
-          props.setMatchButtonActive(false)
+        if (idx === 0) {
+          props.setMatchButtonActive(false);
         }
       }
     }
@@ -133,47 +119,43 @@ const SearchResultItem: FC<SearchResultItemProps> = (props) => {
     getDog();
   }, [props.searchResult, props.likedDogs, isLiked]);
 
-
   return (
     <>
       <Card className="">
-        <Card.Text className="p-2 rounded-top ">
-          {dogInfo?.breed}
-        </Card.Text>
+        <Card.Text className="p-2 rounded-top ">{dogInfo?.breed}</Card.Text>
         <Card.Img variant="bot" src={dogInfo?.img} />
         <Card.Body>
           <Accordion>
             <Accordion.Item eventKey="0">
               <Accordion.Header>Meet {dogInfo?.name}</Accordion.Header>
               <Accordion.Body className="align-left">
-                  <div>
-                    Breed: <strong>{dogInfo?.breed}</strong>
-                  </div>
-                  <div>
-                    Age: <strong>{dogInfo?.age}</strong>
-                  </div>
-                  <br />
-                  <div>
-                    City: <strong>{locationInfo[0]?.city}</strong>
-                  </div>
-                  <div>
-                    County: <strong>{locationInfo[0]?.county}</strong>
-                  </div>
-                  <div>
-                    State: <strong>{locationInfo[0]?.state}</strong>
-                  </div>
-
+                <div>
+                  Breed: <strong>{dogInfo?.breed}</strong>
+                </div>
+                <div>
+                  Age: <strong>{dogInfo?.age}</strong>
+                </div>
+                <br />
+                <div>
+                  City: <strong>{locationInfo[0]?.city}</strong>
+                </div>
+                <div>
+                  County: <strong>{locationInfo[0]?.county}</strong>
+                </div>
+                <div>
+                  State: <strong>{locationInfo[0]?.state}</strong>
+                </div>
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>
-            <Form.Check
-              className="mt-3 text-center"
-              type="switch"
-              id={dogInfo?.id}
-              label={display}
-              checked={isLiked}
-              onChange={(e) => handleChange(e)}
-            />
+          <Form.Check
+            className="mt-3 text-center"
+            type="switch"
+            id={dogInfo?.id}
+            label={display}
+            checked={isLiked}
+            onChange={(e) => handleChange(e)}
+          />
         </Card.Body>
       </Card>
     </>

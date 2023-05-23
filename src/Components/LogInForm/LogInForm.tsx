@@ -15,7 +15,7 @@ const LogInForm: FC<LogInFormProps> = (props) => {
   const expirationDate = new Date();
   expirationDate.setTime(
     expirationDate.getTime() + expirationHours * 60 * 60 * 1000
-  );  
+  );
 
   const [credentials, setCredentials] = useState({
     name: "",
@@ -29,10 +29,9 @@ const LogInForm: FC<LogInFormProps> = (props) => {
     setError("");
   }
 
-  const loginURL = process.env.REACT_APP_API_URL+`/auth/login`;
+  const loginURL = process.env.REACT_APP_API_URL + `/auth/login`;
 
   async function handleSubmit(evt: { preventDefault: () => void }) {
-    // Prevent form from being submitted to the server
     evt.preventDefault();
     try {
       console.log(credentials);
@@ -45,8 +44,10 @@ const LogInForm: FC<LogInFormProps> = (props) => {
         body: JSON.stringify(credentials),
       });
       if (response.status === 200) {
-        console.log(response.status)
-        Cookies.set("hasCookies", `${credentials.name}`, { expires: expirationDate });
+        console.log(response.status);
+        Cookies.set("hasCookies", `${credentials.name}`, {
+          expires: expirationDate,
+        });
         props.setUser(true);
       }
     } catch {
@@ -58,7 +59,6 @@ const LogInForm: FC<LogInFormProps> = (props) => {
 
   return (
     <>
-      
       <Form autoComplete="off" onSubmit={handleSubmit}>
         <Form.Group className="mb-3">
           <Form.Control
