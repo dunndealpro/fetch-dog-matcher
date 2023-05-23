@@ -29,7 +29,7 @@ const LogInForm: FC<LogInFormProps> = (props) => {
     setError("");
   }
 
-  const loginURL = `https://frontend-take-home-service.fetch.com/auth/login`;
+  const loginURL = process.env.REACT_APP_API_URL+`/auth/login`;
 
   async function handleSubmit(evt: { preventDefault: () => void }) {
     // Prevent form from being submitted to the server

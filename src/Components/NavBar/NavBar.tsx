@@ -13,7 +13,7 @@ interface NavBarProps {
 const NavBar: FC<NavBarProps> = ({ setUser }) => {
   async function handleLogOut() {
     let response = await fetch(
-      `https://frontend-take-home-service.fetch.com/auth/logout`,
+      process.env.REACT_APP_API_URL+`/auth/logout`,
       { method: "POST", credentials: "include" }
     );
     console.log(response);

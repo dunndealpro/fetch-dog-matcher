@@ -27,7 +27,7 @@ const ResultsPagination: FC<ResultsPaginationProps> = ({
   setSearchResults,
   resultsPerPage,
 }) => {
-  const searchUrl = `https://frontend-take-home-service.fetch.com`;
+  const searchUrl = process.env.REACT_APP_API_URL + ``;
   const urlNext = searchUrl + searchResult?.next;
   const urlPrev = searchUrl + searchResult?.prev;
 

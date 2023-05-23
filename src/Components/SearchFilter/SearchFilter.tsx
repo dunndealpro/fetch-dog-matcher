@@ -46,7 +46,7 @@ const SearchFilter: FC<SearchFilterProps> = ({
 
   const handleClose = () => setShow(false);
 
-  let searchUrl = `https://frontend-take-home-service.fetch.com/dogs/search?`;
+  let searchUrl = process.env.REACT_APP_API_URL+`/dogs/search?`;
 
   async function handleSubmit() {
     if (ageMin > ageMax) {

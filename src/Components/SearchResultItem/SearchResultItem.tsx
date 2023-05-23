@@ -50,8 +50,8 @@ const SearchResultItem: FC<SearchResultItemProps> = (props) => {
   const [isLiked, setIsLiked] = useState(false);
   const [locationInfo, setLocationInfo] = useState<Array<any>>([]);
 
-  let dogSearchUrl = `https://frontend-take-home-service.fetch.com/dogs`;
-  let locationUrl = `https://frontend-take-home-service.fetch.com/locations`;
+  let dogSearchUrl = process.env.REACT_APP_API_URL+`/dogs`;
+  let locationUrl = process.env.REACT_APP_API_URL+`/locations`;
 
   const reqBodyParams = [props.dog];
   // const locationParams = [dogInfo?.zip_code]

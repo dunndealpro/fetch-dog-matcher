@@ -22,7 +22,7 @@ interface MatchModalProps {
 }
 
 const MatchModal: FC<MatchModalProps> = (props) => {
-  const matchInfoUrl = `https://frontend-take-home-service.fetch.com/dogs`;
+  const matchInfoUrl = process.env.REACT_APP_API_URL+`/dogs`;
   const [matchInfo, setMatchInfo] = useState<Dog>();
   const [matchLocationInfo, setMatchLocationInfo] = useState<Array<any>>([]);
 
@@ -43,7 +43,7 @@ const MatchModal: FC<MatchModalProps> = (props) => {
   }
 
   async function getLocation(location: string | undefined) {
-    const locationUrl = `https://frontend-take-home-service.fetch.com/locations`;
+    const locationUrl = process.env.REACT_APP_API_URL+`/locations`;
     const locationParams = [location];
     if (locationParams !== undefined) {
       let locationResults = await fetch(locationUrl, {

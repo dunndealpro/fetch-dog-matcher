@@ -61,7 +61,7 @@ const FindMatchButtonFloat: FC<FindMatchButtonFloatProps> = ({
 }) => {
   const [match, setMatch] = useState<Match>();
   const [matchModal, setMatchModal] = useState(false);
-  const matchUrl = `https://frontend-take-home-service.fetch.com/dogs/match`;
+  const matchUrl = process.env.REACT_APP_API_URL+`/dogs/match`;
   //   const matchInfoUrl = `https://frontend-take-home-service.fetch.com/dogs`;
   //   const [matchInfo, setMatchInfo] = useState<Dog>()
 

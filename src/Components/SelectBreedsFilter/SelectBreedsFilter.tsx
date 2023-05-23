@@ -18,7 +18,7 @@ const SelectBreedsFilter: FC<SelectBreedsFilterProps> = ({
   const [allBreeds, setAllBreeds] = useState<string[]>([]);
   const [listBreed, setListBreed] = useState("");
 
-  let breedsUrl = `https://frontend-take-home-service.fetch.com/dogs/breeds`;
+  let breedsUrl = process.env.REACT_APP_API_URL+`/dogs/breeds`;
 
   async function getAllBreeds() {
     let breeds = await fetch(breedsUrl, {
