@@ -19,4 +19,6 @@ After results are generated, a user can scroll through the results and is able t
 
 [Link to Deployed App](https://dunndealpro.github.io/fetch-dog-matcher/)
 
+Technologies used: React, TypeScript, HTML, CSS, React-Bootstrap
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
