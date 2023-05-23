@@ -5,6 +5,9 @@ import SearchResultsContainer from "../../Components/SearchResultsContainer/Sear
 import SearchPageWelcome from "../../Components/SearchPageWelcome/SearchPageWelcome";
 import FindMatchButton from "../../Components/FindMatchButton/FindMatchButton";
 import FindMatchButtonFloat from "../../Components/FindMatchButtonFloat/FindMatchButtonFloat";
+import{ Image} from "react-bootstrap";
+
+
 
 // interface ResultsPerPage {
 //   resultsPerPage: number ;
@@ -56,6 +59,8 @@ const SearchPage: FC = () => {
   return (
     <>
       <SearchPageWelcome />
+ 
+
       <Container>
         <Row className="bg-light rounded p-2 m-1 justify-content-center">
           <SearchFilter

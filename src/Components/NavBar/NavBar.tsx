@@ -1,5 +1,7 @@
 import { FC } from "react";
 import Cookies from "js-cookie";
+// import { Image } from "react-bootstrap";
+import Image from './yogi-circle.png'
 
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -26,7 +28,10 @@ const NavBar: FC<NavBarProps> = ({ setUser }) => {
   return (
     <>
       <Navbar sticky="top" className="navbar-col">
-        <Navbar.Brand className="ms-2"> Dog-Matcher</Navbar.Brand>
+        
+        <Navbar.Brand className="ms-2 "> <img className="me-2" src={Image}  width="60"
+              height="60"
+               alt="Yogi Icon"  />Dog-Matcher</Navbar.Brand>
         <Nav className="ms-auto me-2" defaultActiveKey="/">
           <NavDropdown align="end" title={title} id="basic-nav-dropdown">
             <NavDropdown.Item className="" onClick={handleLogOut} href="">
