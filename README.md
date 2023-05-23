@@ -1,4 +1,8 @@
+![Yogi-Circle](public/yogi-circle-400x400.png) 
+
+
 # Fetch - Dog Matcher Take Home Project
+
 
 [Link to Deployed App](https://dunndealpro.github.io/fetch-dog-matcher/)
 
